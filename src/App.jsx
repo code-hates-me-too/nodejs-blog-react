@@ -2,35 +2,58 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Blogs from "./pages/Blogs";
 import BlogDetail from "./pages/BlogDetail";
-import CategoryMenu from "./components/CategoryMenu";
+import Login from "./pages/Login";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import { AuthProvider } from "./context/AuthContext";
+import CategoryMenu from "./components/CategoryMenu";
+
 function App() {
+
     return (
         <BrowserRouter>
 
-            <Navbar />
-            <CategoryMenu />
+            <AuthProvider>
 
-            <main className="main-content">
-                <Routes>
+                <Navbar />
 
-                    <Route path="/" element={<Home />} />
+                <CategoryMenu />
+                
+                <main className="main-content">
 
-                    <Route path="/blogs" element={<Blogs />} />
+                    <Routes>
 
-                    <Route
-                        path="/blogs/category/:slug"
-                        element={<Blogs />}
-                    />
+                        <Route
+                            path="/"
+                            element={<Home />}
+                        />
 
-                    <Route
-                        path="/blogs/:slug"
-                        element={<BlogDetail />}
-                    />
+                        <Route
+                            path="/blogs"
+                            element={<Blogs />}
+                        />
 
-                </Routes>
-            </main>
+                        <Route
+                            path="/blogs/category/:slug"
+                            element={<Blogs />}
+                        />
+
+                        <Route
+                            path="/blogs/:slug"
+                            element={<BlogDetail />}
+                        />
+
+                        <Route
+                            path="/account/login"
+                            element={<Login />}
+                        />
+
+                    </Routes>
+
+                </main>
+
+            </AuthProvider>
 
         </BrowserRouter>
     );

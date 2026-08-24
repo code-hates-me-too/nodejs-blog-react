@@ -680,3 +680,103 @@ a {
 
     border-color: var(--starry-blue);
 }
+
+.navbar-user {
+    display: flex;
+    align-items: center;
+
+    height: 70px;
+    padding: 0 16px;
+
+    color: var(--starry-text-light);
+
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.navbar-logout {
+    height: 70px;
+
+    padding: 0 16px;
+
+    border: 0;
+    background: transparent;
+
+    color: var(--starry-text);
+
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.navbar-logout:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--starry-text-light);
+}
+
+/* =========================================================
+   NAVBAR SAĞ MENÜ
+========================================================= */
+
+.navbar-links-right {
+    margin-left: auto;
+}
+
+
+/* Kullanıcı adı */
+
+.navbar-user {
+    display: flex;
+    align-items: center;
+
+    height: 70px;
+    padding: 0 16px;
+
+    color: var(--starry-text-light);
+
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+
+    white-space: nowrap;
+}
+
+
+/* Çıkış butonu */
+
+.navbar-logout {
+    display: flex;
+    align-items: center;
+
+    height: 70px;
+    padding: 0 16px;
+
+    border: 0;
+    margin: 0;
+
+    background: transparent;
+
+    color: var(--starry-text);
+
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.navbar-logout:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--starry-text-light);
+}
