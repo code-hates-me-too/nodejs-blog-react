@@ -1,0 +1,5 @@
+- [ ] Bloglara yorum, like kısmı getir
+- [ ] Kategoriye göre başlıkları güncelle
+- [ ] Paginationu sayfanın üzerinede ekle ve fazla sayfa olması durumunu ele al
+- [ ] Anasayfa için popüler blogları listele 
+- [ ] 
