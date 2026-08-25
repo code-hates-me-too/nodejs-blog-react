@@ -48,6 +48,12 @@ function Navbar() {
                         </Link>
                     )}
 
+                    {!isAuthenticated && (
+                        <Link to="/account/register">
+                            Kayıt
+                        </Link>
+                    )}
+
 
                     {isAuthenticated && (
                         <>

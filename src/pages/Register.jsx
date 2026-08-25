@@ -1,22 +1,19 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { login as loginRequest } from "../services/authService";
+import { Link, useNavigate } from "react-router-dom";
+import { register as registerRequest } from "../services/authService";
 import { useAuth } from "../context/AuthContext";
-import { Link } from "react-router-dom";
 
-
-function Login() {
+function Register() {
 
     const navigate = useNavigate();
-
     const { login } = useAuth();
 
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-
 
     async function handleSubmit(event) {
 
@@ -27,7 +24,11 @@ function Login() {
 
         try {
 
-            const data = await loginRequest(email, password);
+            const data = await registerRequest(
+                name,
+                email,
+                password
+            );
 
             login(data);
 
@@ -44,13 +45,12 @@ function Login() {
         }
     }
 
-
     return (
-        <div className="auth-page">
+        <div className="login-page">
 
-            <div className="auth-box">
+            <div className="login-box">
 
-                <h1>Giriş Yap</h1>
+                <h1>Kayıt Ol</h1>
 
                 {error && (
                     <p className="login-error">
@@ -62,6 +62,25 @@ function Login() {
 
                     <div className="form-group">
 
+                        <label htmlFor="name">
+                            Ad Soyad
+                        </label>
+
+                        <input
+                            id="name"
+                            type="text"
+                            value={name}
+                            onChange={(event) =>
+                                setName(event.target.value)
+                            }
+                            required
+                        />
+
+                    </div>
+
+
+                    <div className="form-group">
+
                         <label htmlFor="email">
                             Email
                         </label>
@@ -70,7 +89,9 @@ function Login() {
                             id="email"
                             type="email"
                             value={email}
-                            onChange={(event) => setEmail(event.target.value)}
+                            onChange={(event) =>
+                                setEmail(event.target.value)
+                            }
                             required
                         />
 
@@ -87,7 +108,9 @@ function Login() {
                             id="password"
                             type="password"
                             value={password}
-                            onChange={(event) => setPassword(event.target.value)}
+                            onChange={(event) =>
+                                setPassword(event.target.value)
+                            }
                             required
                         />
 
@@ -99,24 +122,20 @@ function Login() {
                         disabled={loading}
                     >
                         {loading
-                            ? "Giriş yapılıyor..."
-                            : "Giriş Yap"
+                            ? "Kayıt yapılıyor..."
+                            : "Kayıt Ol"
                         }
                     </button>
 
                 </form>
 
-            <p className="auth-switch">
-                <Link to="/account/reset-password">
-                    Şifremi unuttum
-                </Link>
-            </p>     
-            <p className="auth-switch">
-                Hesabın yok mu?{" "}
-                <Link to="/account/register">
-                    Kayıt Ol
-                </Link>
-            </p>
+
+                <p className="auth-switch">
+                    Zaten hesabın var mı?{" "}
+                    <Link to="/account/login">
+                        Giriş Yap
+                    </Link>
+                </p>
 
             </div>
 
@@ -124,4 +143,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default Register;
