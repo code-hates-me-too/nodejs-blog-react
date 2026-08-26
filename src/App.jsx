@@ -10,6 +10,13 @@ import Register from "./pages/Register";
 import ResetPassword from "./pages/ResetPassword";
 import NewPassword from "./pages/NewPassword";
 
+import AdminNavbar from "./admin/components/AdminNavbar";
+import AdminLayout from "./admin/AdminLayout";
+import AdminBlogs from "./admin/pages/AdminBlogs";
+import AdminBlogCreate from "./admin/pages/AdminBlogCreate";
+import AdminBlogEdit from "./admin/pages/AdminBlogEdit";
+
+
 function App() {
 
     return (
@@ -20,6 +27,8 @@ function App() {
                 <Navbar />
 
                 <CategoryMenu />
+
+                <AdminNavbar />
                 
                 <main className="main-content">
 
@@ -60,6 +69,21 @@ function App() {
                         <Route
                             path="/account/new-password/:token"
                             element={<NewPassword />}
+                        />
+
+                        <Route
+                            path="/admin/blogs"
+                            element={<AdminBlogs />}
+                        />
+
+                        <Route
+                            path="/admin/blogs/create"
+                            element={<AdminBlogCreate />}
+                        />
+
+                        <Route
+                            path="/admin/blogs/edit/:blogid"
+                            element={<AdminBlogEdit />}
                         />
 
                     </Routes>

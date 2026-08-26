@@ -2,4 +2,7 @@
 - [ ] Kategoriye göre başlıkları güncelle
 - [ ] Paginationu sayfanın üzerinede ekle ve fazla sayfa olması durumunu ele al
 - [ ] Anasayfa için popüler blogları listele 
+- [ ] Moderatörler blogu onaylayamamalı
+- [ ] Blog kartlarındaki taşma durumları ele alınmalı
+- [ ] Eski resim, yeni resim, eski resmi kaldır, yeni resmi kaldır butonları
 - [ ] 

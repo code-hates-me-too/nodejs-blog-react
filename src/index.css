@@ -1338,3 +1338,1415 @@ a {
         text-align: center;
     }
 }
+
+/* =========================================================
+   YÖNETİM NAVBAR
+========================================================= */
+
+.admin-navbar {
+    position: sticky;
+    top: 0;
+
+    z-index: 900;
+
+    width: 100%;
+
+    background: var(--starry-category);
+
+    border-bottom: 1px solid var(--starry-border);
+}
+
+.admin-navbar-inner {
+    max-width: var(--starry-content-width);
+
+    min-height: 52px;
+
+    margin: 0 auto;
+
+    padding: 0;
+
+    display: flex;
+    align-items: stretch;
+}
+
+
+.admin-navbar-links {
+    display: flex;
+    align-items: stretch;
+
+    gap: 0;
+
+    overflow-x: auto;
+
+    scrollbar-width: thin;
+}
+
+.admin-navbar-links a {
+    display: flex;
+    align-items: center;
+
+    height: 52px;
+
+    padding: 0 18px;
+
+    color: var(--starry-text);
+
+    text-decoration: none;
+
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+
+    white-space: nowrap;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.admin-navbar-links a:hover {
+    background: rgba(255, 255, 255, 0.07);
+
+    color: var(--starry-text-light);
+}
+
+
+/* =========================================================
+   YÖNETİM NAVBAR - MOBİL
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .admin-navbar-inner {
+        padding: 0 15px;
+    }
+
+    .admin-navbar-links a {
+        padding: 0 14px;
+    }
+}
+
+/* =========================================================
+   ADMIN SAYFALARI
+========================================================= */
+
+.admin-page {
+    width: 100%;
+    padding: 32px 0 60px;
+}
+
+.admin-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 24px;
+
+    margin-bottom: 28px;
+}
+
+.admin-page-header h1 {
+    margin: 0 0 8px;
+
+    color: var(--starry-text-light);
+
+    font-size: 32px;
+    line-height: 1.2;
+}
+
+.admin-page-header p {
+    margin: 0;
+
+    color: var(--starry-muted);
+
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+
+/* Blog listesi */
+
+.admin-blog-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 14px;
+}
+
+
+/* Blog kartı */
+
+.admin-blog-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 24px;
+
+    width: 100%;
+
+    padding: 20px 22px;
+
+    background: var(--starry-navbar);
+
+    border: 1px solid var(--starry-border);
+    border-radius: 12px;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.admin-blog-card:hover {
+    background: #0d1426;
+
+    border-color: rgba(255, 255, 255, 0.14);
+
+    transform: translateY(-1px);
+}
+
+
+.admin-blog-card-info {
+    min-width: 0;
+
+    flex: 1;
+}
+
+.admin-blog-card-info h2 {
+    margin: 0 0 7px;
+
+    color: var(--starry-text-light);
+
+    font-size: 20px;
+    line-height: 1.3;
+}
+
+.admin-blog-card-info p {
+    margin: 0 0 10px;
+
+    color: var(--starry-muted);
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* Kategori */
+
+.admin-blog-category {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 5px 9px;
+
+    border-radius: 5px;
+
+    background: var(--starry-blue);
+
+    color: var(--starry-text-light);
+
+    font-size: 12px;
+}
+
+
+/* Butonlar */
+
+.admin-blog-card-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    flex-shrink: 0;
+}
+
+.admin-blog-card-actions button,
+.admin-primary-button {
+    border: 0;
+
+    border-radius: 7px;
+
+    padding: 9px 14px;
+
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.admin-blog-card-actions button:hover,
+.admin-primary-button:hover {
+    transform: translateY(-1px);
+}
+
+
+/* Düzenle */
+
+.admin-edit-button {
+    background: var(--starry-blue);
+
+    color: var(--starry-text-light);
+}
+
+.admin-edit-button:hover {
+    background: #3b476b;
+}
+
+
+/* Sil */
+
+.admin-delete-button {
+    background: rgba(180, 50, 50, 0.15);
+
+    color: #ffb4b4;
+}
+
+.admin-delete-button:hover {
+    background: rgba(180, 50, 50, 0.28);
+}
+
+
+/* Blog ekle */
+
+.admin-primary-button {
+    background: var(--starry-blue);
+
+    color: var(--starry-text-light);
+
+    white-space: nowrap;
+}
+
+.admin-primary-button:hover {
+    background: #3b476b;
+}
+
+
+/* Boş liste */
+
+.admin-empty {
+    padding: 40px 20px;
+
+    text-align: center;
+
+    color: var(--starry-muted);
+
+    background: var(--starry-navbar);
+
+    border: 1px solid var(--starry-border);
+    border-radius: 12px;
+}
+
+
+/* Yükleniyor */
+
+.admin-loading {
+    padding: 40px 20px;
+
+    text-align: center;
+
+    color: var(--starry-muted);
+}
+
+
+/* Hata */
+
+.admin-error {
+    margin-bottom: 24px;
+    
+    padding: 16px 18px;
+
+    color: #ffb4b4;
+
+    background: rgba(180, 50, 50, 0.12);
+
+    border: 1px solid rgba(180, 50, 50, 0.25);
+
+    border-radius: 8px;
+}
+
+
+/* =========================================================
+   ADMIN MOBİL
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .admin-page {
+        padding: 24px 0 40px;
+    }
+
+    .admin-page-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        margin-bottom: 20px;
+    }
+
+    .admin-page-header h1 {
+        font-size: 28px;
+    }
+
+    .admin-primary-button {
+        width: 100%;
+    }
+
+    .admin-blog-card {
+        align-items: stretch;
+
+        flex-direction: column;
+
+        gap: 16px;
+
+        padding: 18px;
+    }
+
+    .admin-blog-card-actions {
+        width: 100%;
+    }
+
+    .admin-blog-card-actions button {
+        flex: 1;
+    }
+}
+
+.admin-blog-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+
+/* Blog fotoğrafı */
+
+.admin-blog-card-image {
+    width: 140px;
+    flex-shrink: 0;
+}
+
+.admin-blog-card-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+
+/* Blog bilgileri */
+
+.admin-blog-card-info {
+    flex: 1;
+    min-width: 0;
+}
+
+
+/* Kategori etiketleri */
+
+.admin-blog-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+
+/* ID / Yazar / durum bilgileri */
+
+.admin-blog-card-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    margin-left: auto;
+    margin-right: 10px;
+
+    font-size: 12px;
+    color: #999;
+    white-space: nowrap;
+}
+
+
+/* İşlem butonları */
+
+.admin-blog-card-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.admin-blog-title-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.admin-blog-title-link:hover {
+    text-decoration: underline;
+}
+
+.admin-blog-card-image a {
+    display: block;
+}
+
+.admin-blog-card-image img {
+    cursor: pointer;
+}
+
+/* =========================================================
+   BLOG EKLEME FORMU
+========================================================= */
+
+.admin-form {
+    width: 100%;
+    max-width: 850px;
+
+    padding: 28px;
+
+    background: var(--starry-navbar);
+
+    border: 1px solid var(--starry-border);
+    border-radius: 12px;
+}
+
+
+.admin-form-group {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 22px;
+}
+
+
+.admin-form-group label,
+.admin-form-label {
+    margin-bottom: 8px;
+
+    color: var(--starry-text-light);
+
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+.admin-form-group input[type="text"],
+.admin-form-group textarea {
+    width: 100%;
+
+    padding: 11px 13px;
+
+    box-sizing: border-box;
+
+    background: var(--starry-category);
+
+    border: 1px solid var(--starry-border);
+    border-radius: 7px;
+
+    color: var(--starry-text-light);
+
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+
+.admin-form-group input[type="text"]:focus,
+.admin-form-group textarea:focus {
+    border-color: var(--starry-blue);
+
+    background: #10182c;
+}
+
+
+.admin-form-group textarea {
+    min-height: 220px;
+
+    resize: vertical;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   DOSYA SEÇİMİ
+========================================================= */
+
+.admin-form-group input[type="file"] {
+    width: 100%;
+
+    padding: 10px;
+
+    box-sizing: border-box;
+
+    background: var(--starry-category);
+
+    border: 1px solid var(--starry-border);
+    border-radius: 7px;
+
+    color: var(--starry-muted);
+
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   KATEGORİLER
+========================================================= */
+
+.admin-category-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 4px;
+}
+
+
+.admin-category-option {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px 11px;
+
+    background: var(--starry-category);
+
+    border: 1px solid var(--starry-border);
+    border-radius: 7px;
+
+    color: var(--starry-text);
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.admin-category-option:hover {
+    background: #10182c;
+
+    border-color: rgba(255, 255, 255, 0.14);
+
+    color: var(--starry-text-light);
+}
+
+
+.admin-category-option input {
+    margin: 0;
+
+    accent-color: var(--starry-blue);
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   BLOG FORM SEÇENEK BUTONLARI
+========================================================= */
+
+.admin-form-options {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 4px;
+    margin-bottom: 28px;
+
+    padding-top: 4px;
+}
+
+
+.admin-checkbox {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+
+    padding: 9px 14px;
+
+    background: var(--starry-category);
+
+    border: 1px solid var(--starry-border);
+    border-radius: 7px;
+
+    color: var(--starry-muted);
+
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+
+    cursor: pointer;
+
+    user-select: none;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.admin-checkbox:hover {
+    background: #10182c;
+
+    border-color: rgba(255, 255, 255, 0.14);
+
+    color: var(--starry-text-light);
+
+    transform: translateY(-1px);
+}
+
+
+.admin-checkbox input {
+    position: absolute;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+.admin-checkbox:has(input:checked) {
+    background: var(--starry-blue);
+
+    border-color: var(--starry-blue);
+
+    color: var(--starry-text-light);
+}
+
+
+.admin-checkbox:has(input:checked):hover {
+    background: #3b476b;
+
+    border-color: #3b476b;
+}
+
+
+.admin-checkbox span {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+}
+
+
+.admin-checkbox span::before {
+    content: "";
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: var(--starry-muted);
+
+    transition:
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.admin-checkbox:has(input:checked) span::before {
+    background: #ffffff;
+
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12);
+}
+
+
+/* Mobil */
+
+@media (max-width: 768px) {
+
+    .admin-form-options {
+        flex-direction: row;
+
+        flex-wrap: wrap;
+
+        gap: 8px;
+    }
+
+
+    .admin-checkbox {
+        flex: 1;
+
+        justify-content: center;
+    }
+
+}
+
+/* =========================================================
+   FORM BUTONLARI
+========================================================= */
+
+.admin-form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid var(--starry-border);
+}
+
+
+.admin-secondary-button {
+    border: 0;
+
+    border-radius: 7px;
+
+    padding: 9px 14px;
+
+    background: var(--starry-category);
+
+    color: var(--starry-text);
+
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.admin-secondary-button:hover {
+    background: #10182c;
+
+    color: var(--starry-text-light);
+
+    transform: translateY(-1px);
+}
+
+
+.admin-primary-button:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   BLOG FORM MOBİL
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .admin-form {
+        padding: 20px 18px;
+    }
+
+
+    .admin-form-options {
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 12px;
+    }
+
+
+    .admin-form-actions {
+        flex-direction: column-reverse;
+
+        align-items: stretch;
+    }
+
+
+    .admin-form-actions button {
+        width: 100%;
+    }
+
+
+    .admin-category-list {
+        gap: 7px;
+    }
+
+
+    .admin-category-option {
+        padding: 8px 10px;
+    }
+
+}
+
+/* =========================================================
+   BLOG EDİTÖRÜ
+========================================================= */
+
+.admin-editor {
+    width: 100%;
+
+    background: var(--starry-navbar);
+
+    border: 1px solid var(--starry-border);
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+
+/* Toolbar */
+
+.admin-editor-toolbar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 6px;
+
+    padding: 10px;
+
+    background: var(--starry-category);
+
+    border-bottom: 1px solid var(--starry-border);
+}
+
+
+.admin-editor-toolbar button {
+    min-height: 32px;
+
+    padding: 5px 9px;
+
+    border: 1px solid transparent;
+    border-radius: 6px;
+
+    background: transparent;
+
+    color: var(--starry-text);
+
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.admin-editor-toolbar button:hover {
+    background: rgba(255, 255, 255, 0.08);
+
+    color: var(--starry-text-light);
+}
+
+
+.admin-editor-toolbar button.active {
+    background: var(--starry-blue);
+
+    color: var(--starry-text-light);
+
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+
+.admin-editor-divider {
+    width: 1px;
+    height: 22px;
+
+    margin: 0 3px;
+
+    background: var(--starry-border);
+}
+
+
+/* Editör alanı */
+
+.admin-editor-content {
+    width: 100%;
+}
+
+
+.admin-editor-content .ProseMirror {
+    min-height: 320px;
+
+    padding: 18px;
+
+    outline: none;
+
+    color: var(--starry-text-light);
+
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+
+.admin-editor-content .ProseMirror p {
+    margin: 0 0 14px;
+}
+
+
+.admin-editor-content .ProseMirror h2 {
+    margin: 24px 0 12px;
+
+    color: var(--starry-text-light);
+
+    font-size: 24px;
+    line-height: 1.3;
+}
+
+
+.admin-editor-content .ProseMirror h3 {
+    margin: 20px 0 10px;
+
+    color: var(--starry-text-light);
+
+    font-size: 19px;
+    line-height: 1.3;
+}
+
+
+.admin-editor-content .ProseMirror ul,
+.admin-editor-content .ProseMirror ol {
+    margin: 0 0 16px;
+
+    padding-left: 28px;
+}
+
+
+.admin-editor-content .ProseMirror li {
+    margin-bottom: 5px;
+}
+
+
+.admin-editor-content .ProseMirror blockquote {
+    margin: 18px 0;
+
+    padding: 10px 16px;
+
+    border-left: 3px solid var(--starry-blue);
+
+    color: var(--starry-muted);
+
+    background: rgba(255, 255, 255, 0.03);
+}
+
+
+.admin-editor-content .ProseMirror a {
+    color: #8da9ff;
+
+    text-decoration: underline;
+}
+
+
+.admin-editor-content .ProseMirror strong {
+    font-weight: 700;
+}
+
+
+.admin-editor-content .ProseMirror em {
+    font-style: italic;
+}
+
+
+.admin-editor-content .ProseMirror s {
+    text-decoration: line-through;
+}
+
+
+/* Placeholder */
+
+.admin-editor-content .ProseMirror p.is-editor-empty:first-child::before {
+    content: "Blog açıklamasını buraya yazın...";
+
+    float: left;
+
+    height: 0;
+
+    color: var(--starry-muted);
+
+    pointer-events: none;
+}
+
+
+/* Mobil */
+
+@media (max-width: 768px) {
+
+    .admin-editor-toolbar {
+        gap: 4px;
+
+        padding: 8px;
+    }
+
+    .admin-editor-toolbar button {
+        padding: 5px 7px;
+
+        font-size: 12px;
+    }
+
+    .admin-editor-content .ProseMirror {
+        min-height: 260px;
+
+        padding: 15px;
+
+        font-size: 14px;
+    }
+
+}
+
+.admin-page-header {
+    scroll-margin-top: 70px;
+}
+
+/* =========================================================
+   ADMIN EDITOR
+========================================================= */
+
+.admin-editor {
+    width: 100%;
+
+    background: var(--starry-navbar);
+
+    border: 1px solid var(--starry-border);
+    border-radius: 8px;
+
+    overflow: hidden;
+}
+
+
+.admin-editor-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 10px;
+
+    background: var(--starry-category);
+
+    border-bottom: 1px solid var(--starry-border);
+}
+
+
+.admin-editor-toolbar button {
+    border: 1px solid var(--starry-border);
+    border-radius: 5px;
+
+    padding: 6px 10px;
+
+    background: var(--starry-navbar);
+    color: var(--starry-text);
+
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.admin-editor-toolbar button:hover {
+    background: #0d1426;
+    color: var(--starry-text-light);
+}
+
+
+.admin-editor-toolbar button.active {
+    background: var(--starry-blue);
+    color: var(--starry-text-light);
+}
+
+
+.admin-editor-divider {
+    width: 1px;
+    height: 24px;
+
+    margin: 0 3px;
+
+    background: var(--starry-border);
+}
+
+
+.admin-editor-content {
+    min-height: 350px;
+}
+
+
+.admin-editor-content .ProseMirror {
+    min-height: 350px;
+
+    padding: 18px;
+
+    outline: none;
+
+    color: var(--starry-text);
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+
+.admin-editor-content .ProseMirror p {
+    margin: 0 0 12px;
+}
+
+
+.admin-editor-content .ProseMirror h2,
+.admin-editor-content .ProseMirror h3 {
+    color: var(--starry-text-light);
+
+    margin-top: 24px;
+    margin-bottom: 12px;
+}
+
+
+.admin-editor-content .ProseMirror ul,
+.admin-editor-content .ProseMirror ol {
+    padding-left: 25px;
+}
+
+
+.admin-editor-content .ProseMirror blockquote {
+    margin: 18px 0;
+    padding: 10px 16px;
+
+    border-left: 3px solid var(--starry-blue);
+
+    color: var(--starry-muted);
+}
+
+
+.admin-editor-content .ProseMirror a {
+    color: var(--starry-blue);
+    text-decoration: underline;
+}
+
+
+.admin-editor-content .ProseMirror:focus {
+    box-shadow: inset 0 0 0 1px var(--starry-blue);
+}
+
+
+/* =========================================================
+   MEVCUT BLOG RESMİ
+========================================================= */
+
+.admin-current-image {
+    width: 280px;
+
+    margin-bottom: 12px;
+}
+
+
+.admin-current-image img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    aspect-ratio: 16 / 10;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+
+    border: 1px solid var(--starry-border);
+}
+
+
+@media (max-width: 768px) {
+
+    .admin-editor-toolbar {
+        gap: 5px;
+    }
+
+    .admin-editor-toolbar button {
+        padding: 6px 8px;
+    }
+
+    .admin-editor-content .ProseMirror {
+        min-height: 280px;
+        padding: 15px;
+    }
+
+    .admin-current-image {
+        width: 100%;
+        max-width: 320px;
+    }
+
+}
+
+/* =========================================================
+   ADMIN BLOG EDITOR
+========================================================= */
+
+.admin-editor {
+    width: 100%;
+
+    background: var(--starry-navbar);
+
+    border: 1px solid var(--starry-border);
+    border-radius: 8px;
+
+    overflow: hidden;
+}
+
+.admin-editor-toolbar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+
+    padding: 10px;
+
+    background: var(--starry-category);
+
+    border-bottom: 1px solid var(--starry-border);
+}
+
+.admin-editor-toolbar button {
+    padding: 6px 10px;
+
+    border: 1px solid var(--starry-border);
+    border-radius: 5px;
+
+    background: var(--starry-navbar);
+    color: var(--starry-text);
+
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.admin-editor-toolbar button:hover,
+.admin-editor-toolbar button.active {
+    background: var(--starry-blue);
+    color: var(--starry-text-light);
+
+    border-color: var(--starry-blue);
+}
+
+.admin-editor-divider {
+    width: 1px;
+    height: 24px;
+
+    margin: 0 3px;
+
+    background: var(--starry-border);
+}
+
+.admin-editor-content {
+    width: 100%;
+}
+
+.admin-editor-content .ProseMirror {
+    min-height: 350px;
+
+    padding: 16px 18px;
+
+    color: var(--starry-text-light);
+
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+
+    outline: none;
+}
+
+.admin-editor-content .ProseMirror p {
+    margin: 0 0 12px;
+}
+
+.admin-editor-content .ProseMirror h2,
+.admin-editor-content .ProseMirror h3 {
+    color: var(--starry-text-light);
+
+    line-height: 1.3;
+}
+
+.admin-editor-content .ProseMirror h2 {
+    margin: 24px 0 12px;
+    font-size: 24px;
+}
+
+.admin-editor-content .ProseMirror h3 {
+    margin: 20px 0 10px;
+    font-size: 20px;
+}
+
+.admin-editor-content .ProseMirror a {
+    color: var(--starry-blue);
+}
+
+.admin-editor-content .ProseMirror blockquote {
+    margin: 16px 0;
+    padding: 10px 16px;
+
+    border-left: 3px solid var(--starry-blue);
+
+    color: var(--starry-muted);
+}
+
+.admin-editor-content .ProseMirror ul,
+.admin-editor-content .ProseMirror ol {
+    padding-left: 24px;
+}
+
+.admin-editor-content .ProseMirror strong {
+    color: var(--starry-text-light);
+}
+
+.admin-editor-content .ProseMirror:focus {
+    outline: none;
+}
+
+.admin-current-image {
+    width: 240px;
+    margin-bottom: 12px;
+}
+
+.admin-current-image img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+
+    border-radius: 8px;
+
+    border: 1px solid var(--starry-border);
+}
