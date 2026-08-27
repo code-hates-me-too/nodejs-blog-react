@@ -1,0 +1,772 @@
+.admin-page {
+    width: 100%;
+    padding: 32px 0 60px;
+}
+
+.admin-loading {
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--starry-muted);
+}
+
+.admin-error {
+    margin-bottom: 24px;
+    padding: 16px 18px;
+    color: #ffb4b4;
+    background: rgba(180, 50, 50, 0.12);
+    border: 1px solid rgba(180, 50, 50, 0.25);
+    border-radius: 8px;
+}
+
+.admin-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 28px;
+}
+
+.admin-page-header h1 {
+    margin: 0 0 8px;
+    color: var(--starry-text-light);
+    font-size: 32px;
+    line-height: 1.2;
+}
+
+.admin-page-header-margin h1 {
+    margin: 20px 0 8px;
+    color: var(--starry-text-light);
+    font-size: 32px;
+    line-height: 1.2;
+}
+
+.admin-page-header p {
+    margin: 0;
+    color: var(--starry-muted);
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.admin-blog-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 14px;
+}
+
+.admin-empty {
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--starry-muted);
+    background: var(--starry-navbar);
+    border: 1px solid var(--starry-border);
+    border-radius: 12px;
+}
+
+.admin-blog-card-actions button,
+.admin-primary-button {
+    border: 0;
+
+    border-radius: 7px;
+
+    padding: 9px 14px;
+
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.admin-blog-card-actions button:hover,
+.admin-primary-button:hover {
+    transform: translateY(-1px);
+}
+
+.admin-primary-button {
+    background: var(--starry-blue);
+
+    color: var(--starry-text-light);
+
+    white-space: nowrap;
+}
+
+.admin-primary-button:hover {
+    background: #3b476b;
+}
+
+.admin-primary-button:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+.admin-blog-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 24px;
+
+    width: 100%;
+
+    padding: 20px 22px;
+
+    background: var(--starry-navbar);
+
+    border: 1px solid var(--starry-border);
+    border-radius: 12px;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.admin-blog-card:hover {
+    background: #0d1426;
+
+    border-color: rgba(255, 255, 255, 0.14);
+
+    transform: translateY(-1px);
+}
+
+
+.admin-blog-card-info {
+    min-width: 0;
+
+    flex: 1;
+}
+
+.admin-blog-card-info h2 {
+    margin: 0 0 7px;
+
+    color: var(--starry-text-light);
+
+    font-size: 20px;
+    line-height: 1.3;
+}
+
+.admin-blog-card-info p {
+    margin: 0 0 10px;
+
+    color: var(--starry-muted);
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.admin-blog-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.admin-blog-category {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 5px 9px;
+
+    border-radius: 5px;
+
+    background: var(--starry-blue);
+
+    color: var(--starry-text-light);
+
+    font-size: 12px;
+}
+
+.admin-blog-title-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.admin-blog-title-link:hover {
+    text-decoration: underline;
+}
+
+.admin-blog-card-image {
+    width: 140px;
+    flex-shrink: 0;
+}
+
+.admin-blog-card-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.admin-blog-card-image a {
+    display: block;
+}
+
+.admin-blog-card-image img {
+    cursor: pointer;
+}
+/* *CREATE INPUT*********************************************************************************************************** */
+/* =========================================
+   ADMIN CREATE FORM
+   ========================================= */
+
+.admin-create-form {
+    width: 100%;
+    max-width: 850px;
+
+    padding: 28px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: flex-end;
+
+    gap: 12px;
+
+    background: var(--starry-navbar);
+
+    border: 1px solid var(--starry-border);
+    border-radius: 12px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   FIELD
+   ========================================= */
+
+.admin-create-field {
+    flex: 1;
+
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.admin-create-field label {
+    margin-bottom: 8px;
+
+    color: var(--starry-text-light);
+
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+.admin-create-field input[type="text"] {
+    width: 100%;
+
+    padding: 11px 13px;
+
+    box-sizing: border-box;
+
+    background: var(--starry-category);
+
+    border: 1px solid var(--starry-border);
+    border-radius: 7px;
+
+    color: var(--starry-text-light);
+
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+
+.admin-create-field input[type="text"]:focus {
+    border-color: var(--starry-blue);
+
+    background: #10182c;
+}
+
+
+.admin-create-field input[type="text"]::placeholder {
+    color: var(--starry-muted);
+}
+
+
+/* =========================================
+   ACTIONS
+   ========================================= */
+
+.admin-create-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+
+.admin-create-submit,
+.admin-create-cancel {
+    border: 0;
+
+    border-radius: 7px;
+
+    padding: 9px 14px;
+
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+/* =========================================
+   SUBMIT
+   ========================================= */
+
+.admin-create-submit {
+    background: var(--starry-blue);
+
+    color: var(--starry-text-light);
+}
+
+
+.admin-create-submit:hover {
+    background: #3b476b;
+
+    transform: translateY(-1px);
+}
+
+
+.admin-create-submit:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* =========================================
+   CANCEL
+   ========================================= */
+
+.admin-create-cancel {
+    background: var(--starry-category);
+
+    color: var(--starry-text);
+}
+
+
+.admin-create-cancel:hover {
+    background: #10182c;
+
+    color: var(--starry-text-light);
+
+    transform: translateY(-1px);
+}
+
+
+.admin-create-cancel:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .admin-create-form {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .admin-create-actions {
+        justify-content: flex-end;
+    }
+
+}
+
+/* =========================================
+   ROLE CARD META
+   ========================================= */
+
+.admin--role-card-meta {
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 5px;
+
+    flex-shrink: 0;
+
+    margin-left: auto;
+
+    color: #d4d5f0;
+
+    font-size: 12px;
+    line-height: 1.4;
+
+    white-space: nowrap;
+}
+
+
+.admin--role-card-meta span {
+    opacity: 0.7;
+}
+
+@media (max-width: 700px) {
+
+    .admin--role-card-meta {
+        align-items: flex-start;
+
+        margin-left: 0;
+    }
+
+}
+
+/* =========================================
+   USER LIST
+   ========================================= */
+
+.admin--user-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 14px;
+}
+
+
+/* =========================================
+   USER CARD
+   ========================================= */
+
+.admin--user-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 24px;
+
+    width: 100%;
+
+    padding: 20px 22px;
+
+    box-sizing: border-box;
+
+    background: var(--starry-navbar);
+
+    border: 1px solid var(--starry-border);
+    border-radius: 12px;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.admin--user-card:hover {
+    background: #0d1426;
+
+    border-color: rgba(255, 255, 255, 0.14);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   USER INFO
+   ========================================= */
+
+.admin--user-info {
+    min-width: 0;
+
+    flex: 1;
+}
+
+
+.admin--user-info h2 {
+    margin: 0 0 7px;
+
+    color: var(--starry-text-light);
+
+    font-size: 20px;
+    line-height: 1.3;
+}
+
+
+.admin--user-info p {
+    margin: 0;
+
+    color: var(--starry-muted);
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   USER META
+   ========================================= */
+
+.admin--user-meta {
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 5px;
+
+    flex-shrink: 0;
+
+    margin-left: auto;
+
+    color: #d4d5f0;
+
+    font-size: 12px;
+    line-height: 1.4;
+
+    white-space: nowrap;
+}
+
+
+.admin--user-meta > span {
+    opacity: 0.8;
+}
+
+
+/* =========================================
+   USER ROLES
+   ========================================= */
+
+.admin--user-roles {
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: flex-end;
+
+    gap: 6px;
+}
+
+
+.admin--user-role,
+.admin--user-no-role {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 4px 8px;
+
+    border-radius: 5px;
+
+    background: var(--starry-blue);
+
+    color: var(--starry-text-light);
+
+    font-size: 11px;
+}
+
+
+.admin--user-no-role {
+    background: var(--starry-category);
+
+    color: var(--starry-muted);
+}
+
+
+/* =========================================
+   USER ACTIONS
+   ========================================= */
+
+.admin--user-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 700px) {
+
+    .admin--user-card {
+        align-items: flex-start;
+
+        flex-wrap: wrap;
+    }
+
+
+    .admin--user-meta {
+        align-items: flex-start;
+
+        margin-left: 0;
+    }
+
+
+    .admin--user-roles {
+        justify-content: flex-start;
+    }
+
+
+    .admin--user-actions {
+        width: 100%;
+
+        justify-content: flex-end;
+    }
+
+}
+
+/* =========================================
+   USER ROLE OPTIONS
+   ========================================= */
+
+.admin--user-role-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+
+    padding: 12px;
+
+    background: var(--starry-category);
+
+    border: 1px solid var(--starry-border);
+    border-radius: 8px;
+}
+
+
+.admin--user-role-option {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 9px 10px;
+
+    border-radius: 6px;
+
+    color: var(--starry-text);
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.admin--user-role-option:hover {
+    background: #10182c;
+
+    color: var(--starry-text-light);
+}
+
+
+.admin--user-role-option input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+
+    margin: 0;
+
+    accent-color: var(--starry-blue);
+
+    cursor: pointer;
+}
+
+
+.admin--user-role-option input[type="checkbox"]:checked + span {
+    color: var(--starry-text-light);
+}
+
+.admin-form-group input[type="text"],
+.admin-form-group input[type="email"],
+.admin-form-group textarea {
+    width: 100%;
+
+    padding: 11px 13px;
+
+    box-sizing: border-box;
+
+    background: var(--starry-category);
+
+    border: 1px solid var(--starry-border);
+    border-radius: 7px;
+
+    color: var(--starry-text-light);
+
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+
+.admin-form-group input[type="text"]:focus,
+.admin-form-group input[type="email"]:focus,
+.admin-form-group textarea:focus {
+    border-color: var(--starry-blue);
+
+    background: #10182c;
+}
+
+.admin-form-group input[type="text"]::placeholder,
+.admin-form-group input[type="email"]::placeholder {
+    color: var(--starry-muted);
+}
+/* *ROOT******************************************************************************************************** */
+:root {
+
+    --admin-create-background: var(--starry-card);
+    --admin-create-border: var(--starry-border);
+
+    --admin-create-text: var(--starry-text);
+    --admin-create-muted: var(--starry-muted);
+
+    --admin-create-input-background: var(--starry-background);
+    --admin-create-input-border: var(--starry-border);
+
+    --admin-create-accent: var(--starry-accent);
+
+}

@@ -64,17 +64,16 @@ function AdminNavbar() {
                                 Kategoriler
                             </Link>
 
-                            <Link
-                                to="/admin/categories/create"
+                            <Link 
+                                to="/admin/roles"
                                 className={
-                                    location.pathname === "/admin/categories/create"
-                                        ? "active"
-                                        : ""
+                                    location.pathname === "/admin/roles"
+                                    ? "active"
+                                    : ""
                                 }
                             >
-                                Kategori Ekle
+                                Roller
                             </Link>
-
 
                             <Link
                                 to="/admin/users"
@@ -86,6 +85,8 @@ function AdminNavbar() {
                             >
                                 Kullanıcılar
                             </Link>
+
+
 
                         </>
                     )}

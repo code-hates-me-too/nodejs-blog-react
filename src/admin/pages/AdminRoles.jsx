@@ -2,38 +2,39 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import {
-    getAdminCategories,
-    deleteCategory,
-    createCategory
+    getAdminRoles,
+    createRole,
+    deleteRole
 } from "../../services/adminService";
 
 
-function AdminCategories() {
+function AdminRoles() {
 
     const navigate = useNavigate();
 
-    const [categories, setCategories] = useState([]);
+    const [roles, setRoles] = useState([]);
 
-    const [baslik, setBaslik] = useState("");
+    const [rolename, setRolename] = useState("");
 
     const [loading, setLoading] = useState(true);
     const [submitting, setSubmitting] = useState(false);
 
     const [error, setError] = useState(null);
-    const [success, setSuccess] = useState(null);
+    const [message, setMessage] = useState(null);
 
-    const [deletingCategoryId, setDeletingCategoryId] = useState(null);
+    const [deletingRoleId, setDeletingRoleId] = useState(null);
 
 
     useEffect(() => {
 
-        async function fetchCategories() {
+        async function fetchRoles() {
 
             try {
 
-                const data = await getAdminCategories();
+                const data =
+                    await getAdminRoles();
 
-                setCategories(data.categories);
+                setRoles(data);
 
             } catch (error) {
 
@@ -47,7 +48,7 @@ function AdminCategories() {
 
         }
 
-        fetchCategories();
+        fetchRoles();
 
     }, []);
 
@@ -56,24 +57,41 @@ function AdminCategories() {
 
         event.preventDefault();
 
+        if (!rolename.trim()) {
+
+            setError(
+                "Rol adı boş bırakılamaz."
+            );
+
+            return;
+        }
+
         setSubmitting(true);
         setError(null);
-        setSuccess(null);
+        setMessage(null);
 
         try {
 
-            const data = await createCategory(baslik);
+            const data =
+                await createRole(
+                    rolename.trim()
+                );
 
-            setCategories(previous => [
+            setRoles(previous => [
                 ...previous,
                 data.data
             ]);
 
-            setBaslik("");
+            setRolename("");
 
-            setSuccess(
-                data.message || "Kategori oluşturuldu."
+            setMessage(
+                data.message || "Rol eklendi."
             );
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
 
         } catch (error) {
 
@@ -87,46 +105,53 @@ function AdminCategories() {
 
     }
 
-
-    async function handleDelete(categoryid) {
+    async function handleDelete(roleid) {
 
         const confirmed = window.confirm(
-            "Bu kategoriyi silmek istediğinize emin misiniz?"
+            "Bu rolü silmek istediğinize emin misiniz?"
         );
 
         if (!confirmed) {
             return;
         }
 
-        setDeletingCategoryId(categoryid);
+        setDeletingRoleId(roleid);
         setError(null);
-        setSuccess(null);
+        setMessage(null);
 
         try {
 
-            await deleteCategory(categoryid);
+            const data = await deleteRole(roleid);
 
-            setCategories(previous =>
+            setRoles(previous =>
                 previous.filter(
-                    category =>
-                        category.categoryid !== categoryid
+                    role => role.roleid !== roleid
                 )
             );
 
-            setSuccess(
-                "Kategori silindi."
+            setMessage(
+                data.message || "Rol silindi."
             );
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
 
         } catch (error) {
 
             setError(error.message);
 
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
         } finally {
 
-            setDeletingCategoryId(null);
+            setDeletingRoleId(null);
 
         }
-
     }
 
 
@@ -136,7 +161,7 @@ function AdminCategories() {
             <div className="admin-page">
 
                 <div className="admin-loading">
-                    Kategoriler yükleniyor...
+                    Roller yükleniyor...
                 </div>
 
             </div>
@@ -153,11 +178,11 @@ function AdminCategories() {
                 <div>
 
                     <h1>
-                        Kategoriler
+                        Roller
                     </h1>
 
                     <p>
-                        Blog kategorilerini buradan yönetebilirsiniz.
+                        Kullanıcı rollerini buradan yönetebilirsiniz.
                     </p>
 
                 </div>
@@ -165,19 +190,19 @@ function AdminCategories() {
             </div>
 
 
-            {success && (
+            {error && (
 
-                <div className="admin-success">
-                    {success}
+                <div className="admin-error">
+                    {error}
                 </div>
 
             )}
 
 
-            {error && (
+            {message && (
 
-                <div className="admin-error">
-                    {error}
+                <div className="admin-success">
+                    {message}
                 </div>
 
             )}
@@ -190,18 +215,18 @@ function AdminCategories() {
 
                 <div className="admin-create-field">
 
-                    <label htmlFor="categoryname">
-                        Kategori Ekle
+                    <label htmlFor="rolename">
+                        Rol Ekle
                     </label>
 
                     <input
-                        id="categoryname"
+                        id="rolename"
                         type="text"
-                        value={baslik}
+                        value={rolename}
                         onChange={event =>
-                            setBaslik(event.target.value)
+                            setRolename(event.target.value)
                         }
-                        placeholder="Kategori adı"
+                        placeholder="Rol adı"
                         required
                     />
 
@@ -213,7 +238,7 @@ function AdminCategories() {
                     <button
                         type="button"
                         className="admin-create-cancel"
-                        onClick={() => setBaslik("")}
+                        onClick={() => setRolename("")}
                         disabled={submitting}
                     >
                         Vazgeç
@@ -240,34 +265,35 @@ function AdminCategories() {
                 <div>
 
                     <h1>
-                        Mevcut Kategoriler
+                        Mevcut Roller
                     </h1>
 
                 </div>
 
             </div> */}
 
-            <div className="admin-blog-list">
 
-                {categories.length === 0 ? (
+            <div className="admin--role-list">
+
+                {roles.length === 0 ? (
 
                     <div className="admin-empty">
-                        Henüz kategori bulunmuyor.
+                        Henüz rol bulunmuyor.
                     </div>
 
                 ) : (
 
-                    categories.map(category => (
+                    roles.map(role => (
 
                         <article
                             className="admin-blog-card"
-                            key={category.categoryid}
+                            key={role.roleid}
                         >
 
                             <div className="admin-blog-card-info">
 
                                 <h2>
-                                    {category.categoryname}
+                                    {role.rolename}
                                 </h2>
 
                             </div>
@@ -276,10 +302,11 @@ function AdminCategories() {
                             <div className="admin--role-card-meta">
 
                                 <span>
-                                    ID: {category.categoryid}
+                                    ID: {role.roleid}
                                 </span>
+
                                 <span>
-                                    Blog: {category.blog_count || 0}
+                                    Kullanıcı: {role.user_count || 0}
                                 </span>
 
                             </div>
@@ -292,7 +319,7 @@ function AdminCategories() {
                                     className="admin-edit-button"
                                     onClick={() =>
                                         navigate(
-                                            `/admin/categories/edit/${category.categoryid}`
+                                            `/admin/roles/edit/${role.roleid}`
                                         )
                                     }
                                 >
@@ -304,17 +331,13 @@ function AdminCategories() {
                                     type="button"
                                     className="admin-delete-button"
                                     onClick={() =>
-                                        handleDelete(
-                                            category.categoryid
-                                        )
+                                        handleDelete(role.roleid)
                                     }
                                     disabled={
-                                        deletingCategoryId ===
-                                        category.categoryid
+                                        deletingRoleId === role.roleid
                                     }
                                 >
-                                    {deletingCategoryId ===
-                                    category.categoryid
+                                    {deletingRoleId === role.roleid
                                         ? "Siliniyor..."
                                         : "Sil"
                                     }
@@ -336,4 +359,4 @@ function AdminCategories() {
 }
 
 
-export default AdminCategories;
+export default AdminRoles;

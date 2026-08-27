@@ -231,6 +231,39 @@ export async function getAdminCategories() {
     return data;
 }
 
+export async function createCategory(baslik) {
+
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(
+        `${API_URL}/admin/categories/create`,
+        {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                baslik
+            })
+        }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+
+        throw new Error(
+            data.errors?.map(error => error.message).join(", ") ||
+            data.message ||
+            "Kategori oluşturulamadı."
+        );
+
+    }
+
+    return data;
+}
+
 
 export async function deleteCategory(categoryid) {
 
@@ -258,36 +291,36 @@ export async function deleteCategory(categoryid) {
 }
 
 
-export async function createCategory(baslik) {
+// export async function createCategory(baslik) {
 
-    const token = localStorage.getItem("token");
+//     const token = localStorage.getItem("token");
 
-    const response = await fetch(
-        `${API_URL}/admin/categories/create`,
-        {
-            method: "POST",
-            headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                baslik
-            })
-        }
-    );
+//     const response = await fetch(
+//         `${API_URL}/admin/categories/create`,
+//         {
+//             method: "POST",
+//             headers: {
+//                 Authorization: `Bearer ${token}`,
+//                 "Content-Type": "application/json"
+//             },
+//             body: JSON.stringify({
+//                 baslik
+//             })
+//         }
+//     );
 
-    const data = await response.json();
+//     const data = await response.json();
 
-    if (!response.ok) {
-        throw new Error(
-            data.errors?.map(error => error.message).join(", ") ||
-            data.message ||
-            "Kategori oluşturulamadı."
-        );
-    }
+//     if (!response.ok) {
+//         throw new Error(
+//             data.errors?.map(error => error.message).join(", ") ||
+//             data.message ||
+//             "Kategori oluşturulamadı."
+//         );
+//     }
 
-    return data;
-}
+//     return data;
+// }
 
 
 export async function getCategoryEditData(categoryid) {
@@ -368,6 +401,271 @@ export async function removeBlogFromCategory(categoryid, blogid) {
         throw new Error(
             data.message ||
             "Blog kategoriden çıkarılamadı."
+        );
+    }
+
+    return data;
+}
+
+
+export async function getAdminRoles() {
+
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(
+        `${API_URL}/admin/roles`,
+        {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(
+            data.message || "Roller yüklenemedi."
+        );
+    }
+
+    return data.data;
+}
+
+
+export async function createRole(rolename) {
+
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(
+        `${API_URL}/admin/roles/create`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                rolename
+            })
+        }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(
+            data.errors?.map(error => error.message).join(", ") ||
+            data.message ||
+            "Rol oluşturulamadı."
+        );
+    }
+
+    return data;
+}
+
+
+export async function deleteRole(roleid) {
+
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(
+        `${API_URL}/admin/roles/delete/${roleid}`,
+        {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(
+            data.message || "Rol silinemedi."
+        );
+    }
+
+    return data;
+}
+
+
+export async function getRoleEditData(roleid) {
+
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(
+        `${API_URL}/admin/roles/${roleid}`,
+        {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(
+            data.message || "Rol bilgileri alınamadı."
+        );
+    }
+
+    return data.data;
+}
+
+
+export async function updateRole(roleid, rolename) {
+
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(
+        `${API_URL}/admin/roles/${roleid}`,
+        {
+            method: "PUT",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                rolename
+            })
+        }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+
+        throw new Error(
+            data.errors?.join(", ") ||
+            data.message ||
+            "Rol güncellenemedi."
+        );
+
+    }
+
+    return data;
+}
+
+
+export async function removeUserFromRole(roleid, userid) {
+
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(
+        `${API_URL}/admin/roles/remove`,
+        {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                roleid,
+                userid
+            })
+        }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+
+        throw new Error(
+            data.message ||
+            "Kullanıcının rolü kaldırılamadı."
+        );
+
+    }
+
+    return data;
+}
+
+
+export async function getAdminUsers() {
+
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(
+        `${API_URL}/admin/users`,
+        {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(
+            data.message || "Kullanıcılar yüklenemedi."
+        );
+    }
+
+    return data;
+}
+
+
+export async function getUserEditData(userid) {
+
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(
+        `${API_URL}/admin/users/${userid}`,
+        {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(
+            data.message || "Kullanıcı bilgileri alınamadı."
+        );
+    }
+
+    return data.data;
+}
+
+
+export async function updateUser(userid, userData) {
+
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(
+        `${API_URL}/admin/users/${userid}`,
+        {
+            method: "PUT",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                userid,
+                fullname: userData.fullname,
+                email: userData.email,
+                roles: userData.roles
+            })
+        }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(
+            data.errors?.map(error => error.message).join(", ") ||
+            data.message ||
+            "Kullanıcı bilgileri güncellenemedi."
         );
     }
 

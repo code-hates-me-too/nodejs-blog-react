@@ -1440,13 +1440,22 @@ a {
     align-items: center;
     justify-content: space-between;
 
-    gap: 24px;
+    gap: 20px;
 
-    margin-bottom: 28px;
+    margin-top: 0px;
 }
 
 .admin-page-header h1 {
     margin: 0 0 8px;
+
+    color: var(--starry-text-light);
+
+    font-size: 32px;
+    line-height: 1.2;
+}
+
+.admin-page-header-margin h1 {
+    margin: 20px 0 8px;
 
     color: var(--starry-text-light);
 
@@ -2847,4 +2856,152 @@ a {
     border: 1px solid rgba(65, 180, 50, 0.25);
 
     border-radius: 8px;
+}
+
+/* ================================
+   ADMIN ROLE CREATE
+================================ */
+
+.admin--role-create-form {
+    margin-bottom: 40px;
+}
+
+
+/* ================================
+   ADMIN ROLE LIST HEADER
+================================ */
+
+.admin--role-list-header {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.admin--role-list-header h2 {
+    margin: 0 0 6px;
+}
+
+.admin--role-list-header p {
+    margin: 0;
+}
+
+
+/* ================================
+   ADMIN ROLE LIST
+================================ */
+
+.admin--role-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+/* ================================
+   ADMIN ROLE CARD
+================================ */
+
+.admin--role-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 18px 20px;
+
+    background: var(--starry-surface);
+    border: 1px solid var(--starry-border);
+    border-radius: 10px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.admin--role-card:hover {
+    border-color: var(--starry-border-hover);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    transform: translateY(-1px);
+}
+
+
+/* ================================
+   ADMIN ROLE CARD INFO
+================================ */
+
+.admin--role-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    min-width: 0;
+}
+
+.admin--role-card-info h2 {
+    margin: 0;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    color: var(--starry-text);
+}
+
+.admin--role-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    color: var(--starry-text-muted);
+
+    font-size: 13px;
+}
+
+.admin--role-card-meta span {
+    display: inline-flex;
+    align-items: center;
+}
+
+
+/* ================================
+   ADMIN ROLE CARD ACTIONS
+================================ */
+
+.admin--role-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-left: 20px;
+}
+
+
+/* ================================
+   ADMIN ROLE MOBILE
+================================ */
+
+@media (max-width: 700px) {
+
+    .admin--role-card {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .admin--role-card-actions {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .admin--role-card-actions button {
+        flex: 1;
+    }
+
+    .admin--role-card-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
 }

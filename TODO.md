@@ -5,4 +5,8 @@
 - [ ] Moderatörler blogu onaylayamamalı
 - [ ] Blog kartlarındaki taşma durumları ele alınmalı
 - [ ] Eski resim, yeni resim, eski resmi kaldır, yeni resmi kaldır butonları
+- [ ] rol isimlerini dönüştür ve küçük harf olsun hepsi 
+- [ ] kategoriler kısmına blog sayısını ekle
+- [ ] işlem başarılı veya başarısız uyarılarını tamamla
 - [ ] 
+

@@ -15,8 +15,11 @@ import AdminBlogs from "./admin/pages/AdminBlogs";
 import AdminBlogCreate from "./admin/pages/AdminBlogCreate";
 import AdminBlogEdit from "./admin/pages/AdminBlogEdit";
 import AdminCategories from "./admin/pages/AdminCategories";
-import AdminCategoryCreate from "./admin/pages/AdminCategoryCreate";
 import AdminCategoryEdit from "./admin/pages/AdminCategoryEdit";
+import AdminRoles from "./admin/pages/AdminRoles";
+import AdminRoleEdit from "./admin/pages/AdminRoleEdit";
+import AdminUsers from "./admin/pages/AdminUsers";
+import AdminUserEdit from "./admin/pages/AdminUserEdit";
 
 
 function App() {
@@ -94,13 +97,28 @@ function App() {
                         />
 
                         <Route
-                            path="/admin/categories/create"
-                            element={<AdminCategoryCreate />}
+                            path="/admin/categories/edit/:categoryid"
+                            element={<AdminCategoryEdit />}
                         />
 
                         <Route
-                            path="/admin/categories/edit/:categoryid"
-                            element={<AdminCategoryEdit />}
+                            path="/admin/roles"
+                            element={<AdminRoles />}
+                        />
+
+                        <Route
+                            path="/admin/roles/edit/:roleid"
+                            element={<AdminRoleEdit />}
+                        />
+
+                        <Route
+                            path="/admin/users"
+                            element={<AdminUsers />}
+                        />
+
+                        <Route
+                            path="/admin/users/edit/:userid"
+                            element={<AdminUserEdit />}
                         />
 
                     </Routes>
