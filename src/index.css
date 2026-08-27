@@ -67,7 +67,7 @@ a {
 
     background: var(--starry-navbar);
 
-    border-bottom: 1px solid var(--starry-border);
+    /* border-bottom: 1px solid var(--starry-border); */
 }
 
 .navbar-container {
@@ -185,7 +185,7 @@ a {
 
     background: var(--starry-category);
 
-    border-bottom: 1px solid var(--starry-border);
+    /* border-bottom: 1px solid var(--starry-border); */
 }
 
 .category-menu-inner {
@@ -2749,4 +2749,102 @@ a {
     border-radius: 8px;
 
     border: 1px solid var(--starry-border);
+}
+
+/* ***************************************************** */
+/* ************** KONTROLLU CSS KISMI ****************** */
+/* ***************************************************** */
+
+/* - Admin blog sayfası ve kategoriler sayfası */
+
+.admin--blog-card-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+
+    min-width: 120px;
+}
+
+.admin--blog-card-info span {
+    font-size: 12px;
+    line-height: 1.4;
+    font-weight: 400;
+
+    color: #94a3b8;
+}
+
+/* .admin--blog-card-info span:nth-child(3) {
+    color: #64748b;
+    font-weight: 500;
+}
+
+.admin--blog-card-info span:nth-child(4) {
+    color: #64748b;
+    font-weight: 500;
+} */
+
+/* - Admin Navbar */
+
+.admin--navbar {
+    position: sticky;
+    top: 70px;
+    z-index: 900;
+
+    width: 100%;
+
+    background: #40507e;
+
+    /* border-bottom: 1px solid #263248; */
+
+    /* box-shadow: 0 2px 10px rgba(15, 23, 42, 0.12); */
+}
+
+
+/* Navbar içeriği */
+
+.admin--navbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 64px;
+    padding: 0 24px;
+}
+
+.admin-navbar-links a.active {
+    color: #ffffff;
+    background: #29364d;
+}
+
+@media (max-width: 700px) {
+
+    .admin--navbar-inner {
+        min-height: 58px;
+        padding: 0 16px;
+    }
+
+    .admin--navbar-menu {
+        gap: 2px;
+    }
+
+    .admin--navbar-menu a {
+        padding: 7px 8px;
+        font-size: 12px;
+    }
+
+}
+
+.admin-success {
+    margin-bottom: 24px;
+    
+    padding: 16px 18px;
+
+    color: #b4ffbe;
+
+    background: rgba(50, 180, 50, 0.12);
+
+    border: 1px solid rgba(65, 180, 50, 0.25);
+
+    border-radius: 8px;
 }

@@ -11,10 +11,12 @@ import ResetPassword from "./pages/ResetPassword";
 import NewPassword from "./pages/NewPassword";
 
 import AdminNavbar from "./admin/components/AdminNavbar";
-import AdminLayout from "./admin/AdminLayout";
 import AdminBlogs from "./admin/pages/AdminBlogs";
 import AdminBlogCreate from "./admin/pages/AdminBlogCreate";
 import AdminBlogEdit from "./admin/pages/AdminBlogEdit";
+import AdminCategories from "./admin/pages/AdminCategories";
+import AdminCategoryCreate from "./admin/pages/AdminCategoryCreate";
+import AdminCategoryEdit from "./admin/pages/AdminCategoryEdit";
 
 
 function App() {
@@ -84,6 +86,21 @@ function App() {
                         <Route
                             path="/admin/blogs/edit/:blogid"
                             element={<AdminBlogEdit />}
+                        />
+
+                        <Route
+                            path="admin/categories"
+                            element={<AdminCategories />}
+                        />
+
+                        <Route
+                            path="/admin/categories/create"
+                            element={<AdminCategoryCreate />}
+                        />
+
+                        <Route
+                            path="/admin/categories/edit/:categoryid"
+                            element={<AdminCategoryEdit />}
                         />
 
                     </Routes>

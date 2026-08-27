@@ -209,7 +209,7 @@ function AdminBlogs() {
                             </div>
 
 
-                            <div className="admin-blog-card-meta">
+                            <div className="admin--blog-card-info">
 
                                 <span>
                                     ID: {blog.blogid}
@@ -222,7 +222,7 @@ function AdminBlogs() {
                                 <span>
                                     {blog.onay
                                         ? "Yayında"
-                                        : "Onay bekliyor"}
+                                        : "Onaysız"}
                                 </span>
 
                                 <span>
@@ -274,3 +274,4 @@ function AdminBlogs() {
 }
 
 export default AdminBlogs;
+

@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
 function AdminNavbar() {
 
     const { user } = useAuth();
+    const location = useLocation();
 
     if (!user) {
         return null;
@@ -19,30 +20,73 @@ function AdminNavbar() {
     }
 
     return (
-        <nav className="admin-navbar">
+        <nav className="admin--navbar">
 
             <div className="admin-navbar-inner">
 
                 <div className="admin-navbar-links">
 
-                    <Link to="/admin/blogs/create">
-                        Blog Ekle
+                    <Link
+                        to="/admin/blogs"
+                        className={
+                            location.pathname === "/admin/blogs"
+                                ? "active"
+                                : ""
+                        }
+                    >
+                        Blogları Düzenle
                     </Link>
 
-                    <Link to="/admin/blogs">
-                        Blogları Düzenle
+
+                    <Link
+                        to="/admin/blogs/create"
+                        className={
+                            location.pathname === "/admin/blogs/create"
+                                ? "active"
+                                : ""
+                        }
+                    >
+                        Blog Ekle
                     </Link>
 
 
                     {isAdmin && (
                         <>
-                            <Link to="/admin/categories">
+
+                            <Link
+                                to="/admin/categories"
+                                className={
+                                    location.pathname === "/admin/categories"
+                                        ? "active"
+                                        : ""
+                                }
+                            >
                                 Kategoriler
                             </Link>
 
-                            <Link to="/admin/users">
+                            <Link
+                                to="/admin/categories/create"
+                                className={
+                                    location.pathname === "/admin/categories/create"
+                                        ? "active"
+                                        : ""
+                                }
+                            >
+                                Kategori Ekle
+                            </Link>
+
+
+                            <Link
+                                to="/admin/users"
+                                className={
+                                    location.pathname === "/admin/users"
+                                        ? "active"
+                                        : ""
+                                }
+                            >
                                 Kullanıcılar
                             </Link>
+
                         </>
                     )}
 

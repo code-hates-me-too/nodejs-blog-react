@@ -180,6 +180,7 @@ export async function updateBlog(blogid, blogData) {
     return data;
 }
 
+
 export async function deleteBlog(blogid) {
 
     const token = localStorage.getItem("token");
@@ -199,6 +200,174 @@ export async function deleteBlog(blogid) {
     if (!response.ok) {
         throw new Error(
             data.message || "Blog silinemedi."
+        );
+    }
+
+    return data;
+}
+
+
+export async function getAdminCategories() {
+    const token = localStorage.getItem("token");
+    
+    const response = await fetch(
+        `${API_URL}/admin/categories`,
+        {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(
+            data.message || "Kategoriler yüklenemedi"
+        );
+    }
+
+    return data;
+}
+
+
+export async function deleteCategory(categoryid) {
+
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(
+        `${API_URL}/admin/categories/delete/${categoryid}`,
+        {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(
+            data.message || "Kategori silinemedi."
+        );
+    }
+
+    return data;
+}
+
+
+export async function createCategory(baslik) {
+
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(
+        `${API_URL}/admin/categories/create`,
+        {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                baslik
+            })
+        }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(
+            data.errors?.map(error => error.message).join(", ") ||
+            data.message ||
+            "Kategori oluşturulamadı."
+        );
+    }
+
+    return data;
+}
+
+
+export async function getCategoryEditData(categoryid) {
+
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(
+        `${API_URL}/admin/categories/${categoryid}`,
+        {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(
+            data.message || "Kategori bilgileri alınamadı."
+        );
+    }
+
+    return data.data;
+}
+
+
+export async function updateCategory(categoryid, baslik) {
+
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(
+        `${API_URL}/admin/categories/${categoryid}`,
+        {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                baslik
+            })
+        }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(
+            data.errors?.map(error => error.message).join(", ") ||
+            data.message ||
+            "Kategori güncellenemedi."
+        );
+    }
+
+    return data;
+}
+
+
+export async function removeBlogFromCategory(categoryid, blogid) {
+
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(
+        `${API_URL}/admin/categories/${categoryid}/blogs/${blogid}`,
+        {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(
+            data.message ||
+            "Blog kategoriden çıkarılamadı."
         );
     }
 
