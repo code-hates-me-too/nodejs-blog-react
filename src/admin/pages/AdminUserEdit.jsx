@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 import {
     getUserEditData,
@@ -11,6 +12,7 @@ function AdminUserEdit() {
 
     const navigate = useNavigate();
     const { userid } = useParams();
+    const { user: currentUser } = useAuth();
 
     const pageTopRef = useRef(null);
 
@@ -25,6 +27,11 @@ function AdminUserEdit() {
 
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
+
+    // Bu kullanıcı, giriş yapmış olan kullanıcının kendisi mi?
+    const isEditingSelf =
+        currentUser &&
+        String(currentUser.userid) === String(userid);
 
 
     useEffect(() => {
@@ -63,19 +70,38 @@ function AdminUserEdit() {
     }, [userid]);
 
 
-    function handleRoleChange(roleid) {
+    function handleRoleChange(role) {
+
+        // Kendi admin rolünü kendinden kaldırmasını engelliyoruz.
+        // Gerçek güvenlik backend'de, bu sadece kullanıcıyı
+        // baştan yanlış bir işlemden caydırmak için.
+        const isLockingSelfOut =
+            isEditingSelf &&
+            role.rolename === "admin" &&
+            selectedRoles.includes(role.roleid);
+
+        if (isLockingSelfOut) {
+            setError("Kendi admin rolünüzü kendinizden kaldıramazsınız.");
+            setTimeout(() => {
+                pageTopRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }, 0);
+            return;
+        }
 
         setSelectedRoles(previous => {
 
-            if (previous.includes(roleid)) {
+            if (previous.includes(role.roleid)) {
 
                 return previous.filter(
-                    id => id !== roleid
+                    id => id !== role.roleid
                 );
 
             }
 
-            return [...previous, roleid];
+            return [...previous, role.roleid];
 
         });
 
@@ -172,20 +198,16 @@ function AdminUserEdit() {
 
 
             {success && (
-
                 <div className="admin-success">
                     {success}
                 </div>
-
             )}
 
 
             {error && (
-
                 <div className="admin-error">
                     {error}
                 </div>
-
             )}
 
 
@@ -249,34 +271,47 @@ function AdminUserEdit() {
 
                         ) : (
 
-                            roles.map(role => (
+                            roles.map(role => {
 
-                                <label
-                                    className="admin--user-role-option"
-                                    key={role.roleid}
-                                >
+                                const isLockedRole =
+                                    isEditingSelf &&
+                                    role.rolename === "admin";
 
-                                    <input
-                                        type="checkbox"
-                                        checked={
-                                            selectedRoles.includes(
-                                                role.roleid
-                                            )
+                                return (
+
+                                    <label
+                                        className="admin--user-role-option"
+                                        key={role.roleid}
+                                        title={
+                                            isLockedRole
+                                                ? "Kendi admin rolünüzü kaldıramazsınız."
+                                                : undefined
                                         }
-                                        onChange={() =>
-                                            handleRoleChange(
-                                                role.roleid
-                                            )
-                                        }
-                                    />
+                                    >
 
-                                    <span>
-                                        {role.rolename}
-                                    </span>
+                                        <input
+                                            type="checkbox"
+                                            checked={
+                                                selectedRoles.includes(
+                                                    role.roleid
+                                                )
+                                            }
+                                            disabled={isLockedRole}
+                                            onChange={() =>
+                                                handleRoleChange(role)
+                                            }
+                                        />
 
-                                </label>
+                                        <span>
+                                            {role.rolename}
+                                            {isLockedRole && " (kaldırılamaz)"}
+                                        </span>
 
-                            ))
+                                    </label>
+
+                                );
+
+                            })
 
                         )}
 

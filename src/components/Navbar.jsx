@@ -57,9 +57,12 @@ function Navbar() {
 
                     {isAuthenticated && (
                         <>
-                            <span className="navbar-user">
+                            <Link
+                                to="/profile"
+                                className="navbar-user"
+                            >
                                 {user.fullname}
-                            </span>
+                            </Link>
 
                             {isAdmin && (
                                 <Link to="/admin">
