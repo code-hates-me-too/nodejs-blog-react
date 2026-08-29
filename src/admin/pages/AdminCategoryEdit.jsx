@@ -425,6 +425,19 @@ function AdminCategoryEdit() {
 
             </div>
 
+                <div className="admin-form-actions">
+
+                <button
+                    type="button"
+                    className="admin-primary-button"
+                    onClick={() =>
+                        navigate("/admin/categories")
+                    }
+                >
+                    Kategorilere Dön
+                </button>
+
+            </div>
         </div>
     );
 

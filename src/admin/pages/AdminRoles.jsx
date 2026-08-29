@@ -24,7 +24,6 @@ function AdminRoles() {
 
     const [deletingRoleId, setDeletingRoleId] = useState(null);
 
-
     useEffect(() => {
 
         async function fetchRoles() {
@@ -294,6 +293,9 @@ function AdminRoles() {
 
                                 <h2>
                                     {role.rolename}
+                                    {role.isSystemRole && (
+                                        <span className="admin-badge"> (Yerleşik)</span>
+                                    )}
                                 </h2>
 
                             </div>
@@ -323,25 +325,27 @@ function AdminRoles() {
                                         )
                                     }
                                 >
-                                    Düzenle
+                                    {role.isSystemRole ? "Görüntüle" : "Düzenle"}
                                 </button>
 
 
-                                <button
-                                    type="button"
-                                    className="admin-delete-button"
-                                    onClick={() =>
-                                        handleDelete(role.roleid)
-                                    }
-                                    disabled={
-                                        deletingRoleId === role.roleid
-                                    }
-                                >
-                                    {deletingRoleId === role.roleid
-                                        ? "Siliniyor..."
-                                        : "Sil"
-                                    }
-                                </button>
+                                {!role.isSystemRole && (
+                                    <button
+                                        type="button"
+                                        className="admin-delete-button"
+                                        onClick={() =>
+                                            handleDelete(role.roleid)
+                                        }
+                                        disabled={
+                                            deletingRoleId === role.roleid
+                                        }
+                                    >
+                                        {deletingRoleId === role.roleid
+                                            ? "Siliniyor..."
+                                            : "Sil"
+                                        }
+                                    </button>
+                                )}
 
                             </div>
 

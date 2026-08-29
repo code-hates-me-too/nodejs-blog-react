@@ -51,6 +51,7 @@ export async function register(name, email, password) {
     return data;
 }
 
+
 export async function resetPassword(email) {
 
     const response = await fetch(`${API_URL}/auth/reset-password`, {

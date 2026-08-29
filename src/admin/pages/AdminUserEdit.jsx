@@ -173,7 +173,7 @@ function AdminUserEdit() {
 
             {success && (
 
-                <div className="admin--success">
+                <div className="admin-success">
                     {success}
                 </div>
 

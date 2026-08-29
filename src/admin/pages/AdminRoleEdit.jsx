@@ -27,6 +27,7 @@ function AdminRoleEdit() {
 
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
+    const [isSystemRole, setIsSystemRole] = useState(false);
 
 
     useEffect(() => {
@@ -40,6 +41,7 @@ function AdminRoleEdit() {
                 setRole(data.role);
                 setUsers(data.users || []);
                 setRolename(data.role.rolename || "");
+                setIsSystemRole(Boolean(data.isSystemRole));
 
             } catch (error) {
 
@@ -79,6 +81,11 @@ function AdminRoleEdit() {
     async function handleSubmit(event) {
 
         event.preventDefault();
+
+        if (isSystemRole) {
+            setError("Yerleşik roller düzenlenemez.");
+            return;
+        }
 
         setSubmitting(true);
         setError(null);
@@ -214,7 +221,7 @@ function AdminRoleEdit() {
 
             {error && (
 
-                <div className="admin--message admin--message-error">
+                <div className="admin-error">
 
                     {error}
 
@@ -225,7 +232,7 @@ function AdminRoleEdit() {
 
             {success && (
 
-                <div className="admin--message admin--message-success">
+                <div className="admin-success">
 
                     {success}
 
@@ -289,9 +296,9 @@ function AdminRoleEdit() {
             </form>
 
 
-            <div className="admin--role-users">
+            <div className="admin-page">
 
-                <div className="admin--role-users-header">
+                <div className="admin-page-header">
 
                     <div>
 
@@ -300,14 +307,11 @@ function AdminRoleEdit() {
                         </h2>
 
                         <p>
-                            Bu role atanmış kullanıcılar.
+                            Bu role atanmış kullanıcılar: {users.length}
                         </p>
 
                     </div>
 
-                    <span className="admin--role-user-count">
-                        {users.length} kullanıcı
-                    </span>
 
                 </div>
 
@@ -403,7 +407,7 @@ function AdminRoleEdit() {
 
                 <button
                     type="button"
-                    className="admin-secondary-button"
+                    className="admin-primary-button"
                     onClick={() =>
                         navigate("/admin/roles")
                     }

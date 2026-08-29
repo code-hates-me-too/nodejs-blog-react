@@ -8,5 +8,6 @@
 - [ ] rol isimlerini dönüştür ve küçük harf olsun hepsi 
 - [ ] kategoriler kısmına blog sayısını ekle
 - [ ] işlem başarılı veya başarısız uyarılarını tamamla
+- [ ] blog kategorilerinden , kullanıcı rol etiketlerinden ilgili sayfalara yönlendirme yapılsın
 - [ ] 
 
