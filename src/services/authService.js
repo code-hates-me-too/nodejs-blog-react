@@ -25,7 +25,7 @@ export async function login(email, password) {
 }
 
 
-export async function register(name, email, password) {
+export async function register(name, username, email, password) {
     const response = await fetch(`${API_URL}/auth/register`, {
         method: "POST",
         headers: {
@@ -33,6 +33,7 @@ export async function register(name, email, password) {
         },
         body: JSON.stringify({
             name,
+            username,
             email,
             password
         })
@@ -49,6 +50,21 @@ export async function register(name, email, password) {
     }
 
     return data;
+}
+
+
+export async function checkUsername(username) {
+    const response = await fetch(
+        `${API_URL}/auth/check-username?username=${encodeURIComponent(username)}`
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.message || "Kullanıcı adı kontrol edilemedi.");
+    }
+
+    return data; // { success, available, message }
 }
 
 

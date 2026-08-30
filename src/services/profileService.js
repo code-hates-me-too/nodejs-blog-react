@@ -18,33 +18,6 @@ export async function getProfile() {
 }
 
 
-export async function updateProfile({ fullname, email }) {
-
-    const token = localStorage.getItem("token");
-
-    const response = await fetch(`${API_URL}/profile`, {
-        method: "PUT",
-        headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ fullname, email })
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-        throw new Error(
-            data.errors?.join(", ") ||
-            data.message ||
-            "Profil güncellenemedi."
-        );
-    }
-
-    return data;
-}
-
-
 export async function updatePassword({ currentPassword, newPassword }) {
 
     const token = localStorage.getItem("token");
@@ -66,6 +39,52 @@ export async function updatePassword({ currentPassword, newPassword }) {
             data.message ||
             "Parola güncellenemedi."
         );
+    }
+
+    return data;
+}
+
+
+export async function updateProfile({ username, bio }) {
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(`${API_URL}/profile`, {
+        method: "PUT",
+        headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ username, bio })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(
+            data.errors?.join(", ") || data.message || "Profil güncellenemedi."
+        );
+    }
+
+    return data;
+}
+
+
+export async function uploadAvatar(blob) {
+    const token = localStorage.getItem("token");
+
+    const formData = new FormData();
+    formData.append("avatar", blob, "avatar.jpg");
+
+    const response = await fetch(`${API_URL}/profile/avatar`, {
+        method: "PUT",
+        headers: { Authorization: `Bearer ${token}` },
+        body: formData
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.message || "Fotoğraf yüklenemedi.");
     }
 
     return data;

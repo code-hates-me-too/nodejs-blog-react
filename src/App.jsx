@@ -21,7 +21,8 @@ import AdminRoleEdit from "./admin/pages/AdminRoleEdit";
 import AdminUsers from "./admin/pages/AdminUsers";
 import AdminUserEdit from "./admin/pages/AdminUserEdit";
 
-import Profile from "./pages/Profile";
+import Profile from "./profile/pages/Profile";
+import ProfileEdit from "./profile/pages/ProfileEdit";
 
 
 function App() {
@@ -126,6 +127,11 @@ function App() {
                         <Route
                             path="/profile"
                             element={<Profile />}
+                        />
+
+                        <Route
+                            path="/profile/edit"
+                            element={<ProfileEdit />}
                         />
 
                     </Routes>
