@@ -42,6 +42,20 @@ function AdminUsers() {
 
     }, []);
 
+    function renderAvatar(user, sizeClass = "admin-mini-avatar") {
+        return (
+            <div className={sizeClass}>
+                {user.avatar ? (
+                    <img
+                        src={`http://localhost:3000/static/avatars/${user.avatar}`}
+                        alt={user.username}
+                    />
+                ) : (
+                    <span>{user.username?.charAt(0)?.toUpperCase() || "?"}</span>
+                )}
+            </div>
+        );
+    }
 
     if (loading) {
 
@@ -103,11 +117,19 @@ function AdminUsers() {
                             className="admin--user-card"
                             key={user.userid}
                         >
+                            
 
                             <div className="admin--user-info">
 
+                                <div className="admin-blog-card-info">
+                                    <div className="admin-card-title-row">
+                                        {renderAvatar(user)}
+                                        <h2>@{user.username}</h2>
+                                    </div>
+                                </div>
+                                <br />
                                 <h2>
-                                    {user.fullname}
+                                    <i>{user.fullname}</i>
                                 </h2>
 
                                 <p>

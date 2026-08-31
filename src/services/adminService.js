@@ -671,3 +671,43 @@ export async function updateUser(userid, userData) {
 
     return data;
 }
+
+
+export async function searchUsersByUsername(query) {
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(
+        `${API_URL}/admin/search?username=${encodeURIComponent(query)}`,
+        { headers: { Authorization: `Bearer ${token}` } }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.message || "Kullanıcılar aranamadı.");
+    }
+
+    return data.data;
+}
+
+
+export async function addUserToRole(roleid, userid) {
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(`${API_URL}/admin/add`, {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ roleid, userid })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.message || "Kullanıcı role eklenemedi.");
+    }
+
+    return data;
+}  

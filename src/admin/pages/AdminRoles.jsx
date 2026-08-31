@@ -272,7 +272,7 @@ function AdminRoles() {
             </div> */}
 
 
-            <div className="admin--role-list">
+            <div className="admin-blog-list">
 
                 {roles.length === 0 ? (
 

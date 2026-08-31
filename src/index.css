@@ -1,20 +1,20 @@
-/* =========================================================
-   GENEL
-========================================================= */
+/* -=========================================================
+   -GENEL
+-========================================================= */
 * { box-sizing: border-box; }
 :root { --starry-bg: #0b1020; --starry-navbar: #080d1a; --starry-category: #0e152a; --starry-blue: #303a59; --starry-text: #c7d2fe; --starry-text-light: #ffffff; --starry-muted: #8f9bb8; --starry-border: rgba(255, 255, 255, 0.08); --starry-content-width: 1200px; }
 html { margin: 0; padding: 0; }
 body { margin: 0; padding: 0; font-family: Arial, sans-serif; background: var(--starry-bg); color: var(--starry-text); }
 a { color: inherit; }
 
-/* =========================================================
-   ANA İÇERİK
-========================================================= */
+/* -=========================================================
+   -ANA İÇERİK
+-========================================================= */
 .main-content { max-width: var(--starry-content-width); margin: 0 auto; padding: 32px 24px; }
 
-/* =========================================================
-   NAVBAR
-========================================================= */
+/* !=========================================================
+   !NAVBAR
+!========================================================= */
 .navbar-body2 { position: sticky; top: 0; z-index: 1000; width: 100%; background: var(--starry-navbar); }
 .navbar-container { max-width: var(--starry-content-width); min-height: 70px; margin: 0 auto; display: flex; align-items: center; padding: 0 24px; }
 
@@ -32,9 +32,9 @@ a { color: inherit; }
 .navbar-login { display: flex; align-items: center; height: 70px; margin-left: auto; padding: 0 16px; color: var(--starry-text); text-decoration: none; font-family: Arial, sans-serif; font-size: 15px; font-weight: 400; }
 .navbar-login:hover { background: rgba(255, 255, 255, 0.06); color: var(--starry-text-light); }
 
-/* =========================================================
-   KATEGORİ MENÜSÜ
-========================================================= */
+/* !=========================================================
+   !KATEGORİ NAVBAR
+!========================================================= */
 .category-menu { width: 100%; background: var(--starry-category); }
 .category-menu-inner { max-width: var(--starry-content-width); min-height: 52px; margin: 0 auto; display: flex; align-items: stretch; padding: 0; overflow-x: auto; scrollbar-width: thin; }
 
@@ -47,42 +47,58 @@ a { color: inherit; }
 /* Aktif kategori */
 .category-link.active { background: var(--starry-blue); color: var(--starry-text-light); }
 
-/* =========================================================
-   BLOG LİSTESİ
-========================================================= */
+/* !=========================================================
+   !YÖNETİM NAVBAR
+!========================================================= */
+.admin-navbar { position: sticky; top: 0; z-index: 900; width: 100%; background: var(--starry-category); border-bottom: 1px solid var(--starry-border); }
+.admin-navbar-inner { max-width: var(--starry-content-width); min-height: 52px; margin: 0 auto; padding: 0; display: flex; align-items: stretch; }
+.admin-navbar-links { display: flex; align-items: stretch; gap: 0; overflow-x: auto; scrollbar-width: thin; }
+.admin-navbar-links a { display: flex; align-items: center; height: 52px; padding: 0 18px; color: var(--starry-text); text-decoration: none; font-family: Arial, sans-serif; font-size: 15px; font-weight: 400; white-space: nowrap; }
+.admin-navbar-links a:hover { background: rgba(255, 255, 255, 0.07); color: var(--starry-text-light); }
+
+/* !=========================================================
+   !NAVBAR SAĞ MENÜ
+!========================================================= */
+.navbar-links-right { margin-left: auto; }
+
+/* Kullanıcı adı */
+.navbar-user { display: flex; align-items: center; height: 70px; padding: 0 16px; color: var(--starry-text-light); font-family: Arial, sans-serif; font-size: 15px; font-weight: 500; white-space: nowrap; }
+
+/* Çıkış butonu */
+.navbar-logout { display: flex; align-items: center; height: 70px; padding: 0 16px; border: 0; margin: 0; background: transparent; color: var(--starry-text); font-family: Arial, sans-serif; font-size: 15px; font-weight: 400; cursor: pointer; transition: background-color 0.2s ease, color 0.2s ease; }
+.navbar-logout:hover { background: rgba(255, 255, 255, 0.06); color: var(--starry-text-light); }
+
+/* +=========================================================
+   +BLOG LİSTESİ
++========================================================= */
 .blog-list { width: 100%; display: flex; flex-direction: column; gap: 20px; }
 
-/* =========================================================
-   BLOG CARD
-========================================================= */
+/* +=========================================================
+   +BLOG CARD
++========================================================= */
 .blog-card { width: 100%; margin: 0; text-decoration: none; color: inherit; }
 
 /*
-    Kartın tamamı link.
-    
-    Yapı:
-    
-    ┌──────────────────────────────────────────────┐
-    │                    │                         │
-    │      16:9          │       BAŞLIK            │
-    │      GÖRSEL        │                         │
-    │                    │       Altbaşlık         │
-    │                    │                         │
-    └──────────────────────────────────────────────┘
+    +Kartın tamamı link.
+    +Yapı:
+    +┌──────────────────────────────────────────────┐
+    +│      16:9          │       BAŞLIK            │
+    +│      GÖRSEL        │       Altbaşlık         │
+    +└──────────────────────────────────────────────┘
 */
 .blog-card-content { width: 100%; min-height: 180px; display: flex; overflow: hidden; background: var(--starry-navbar); border: 1px solid var(--starry-border); border-radius: 14px; transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease; }
 
-/* Kart hover */
+/* +Kart hover */
 .blog-card-content:hover { transform: translateY(-2px); background: #0d1426; border-color: rgba(255, 255, 255, 0.16); }
 
-/* =========================================================
-   BLOG CARD - GÖRSEL
-========================================================= */
+/* +=========================================================
+   +BLOG CARD - GÖRSEL
++========================================================= */
 .blog-card-image { width: 320px; height: 180px; aspect-ratio: 16 / 9; object-fit: cover; display: block; flex: 0 0 320px; }
 
-/* =========================================================
-   BLOG CARD - İÇERİK
-========================================================= */
+/* +=========================================================
+   +BLOG CARD - İÇERİK
++========================================================= */
 .blog-card-info { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: flex-start; padding: 24px; }
 
 /* Blog başlığı */
@@ -91,9 +107,9 @@ a { color: inherit; }
 /* Blog altbaşlığı */
 .blog-card-info p { margin: 0; color: var(--starry-text); font-family: Arial, sans-serif; font-size: 15px; line-height: 1.6; }
 
-/* =========================================================
-   BLOG DETAY
-========================================================= */
+/* +=========================================================
+   +BLOG DETAY
++========================================================= */
 .blog-detail { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
 .blog-detail article { overflow: hidden; background: var(--starry-navbar); border: 1px solid var(--starry-border); border-radius: 14px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15); }
 
@@ -115,9 +131,9 @@ a { color: inherit; }
 /* Açıklama */
 .blog-detail-description { color: var(--starry-text); font-size: 17px; line-height: 1.8; }
 
-/* =========================================================
-   MOBİL
-========================================================= */
+/* <=========================================================
+   <MOBİL
+<========================================================= */
 
 @media (max-width: 768px) {
     /* -----------------------------------------------------
@@ -154,29 +170,18 @@ a { color: inherit; }
     .blog-detail-subtitle { font-size: 16px; }
     .blog-detail-description { font-size: 16px; }
 }
-/* =========================================================
-   PAGINATION
-========================================================= */
+/* ?=========================================================
+   ?PAGINATION
+?========================================================= */
 .pagination { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 30px; margin-bottom: 20px; }
 .pagination-link { min-width: 40px; height: 40px; padding: 0 12px; display: flex; align-items: center; justify-content: center; color: var(--starry-text); background: var(--starry-navbar); border: 1px solid var(--starry-border); border-radius: 8px; text-decoration: none; font-family: Arial, sans-serif; font-size: 14px; transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
 .pagination-link:hover { background: rgba(255, 255, 255, 0.07); color: var(--starry-text-light); border-color: rgba(255, 255, 255, 0.14); }
 .pagination-link.active { background: var(--starry-blue); color: var(--starry-text-light); border-color: var(--starry-blue); }
 
-/* =========================================================
-   NAVBAR SAĞ MENÜ
-========================================================= */
-.navbar-links-right { margin-left: auto; }
 
-/* Kullanıcı adı */
-.navbar-user { display: flex; align-items: center; height: 70px; padding: 0 16px; color: var(--starry-text-light); font-family: Arial, sans-serif; font-size: 15px; font-weight: 500; white-space: nowrap; }
-
-/* Çıkış butonu */
-.navbar-logout { display: flex; align-items: center; height: 70px; padding: 0 16px; border: 0; margin: 0; background: transparent; color: var(--starry-text); font-family: Arial, sans-serif; font-size: 15px; font-weight: 400; cursor: pointer; transition: background-color 0.2s ease, color 0.2s ease; }
-.navbar-logout:hover { background: rgba(255, 255, 255, 0.06); color: var(--starry-text-light); }
-
-/* =========================================================
-   AUTH SAYFALARI (LOGIN, REGISTER, RESET, NEW PASSWORD ORTAK)
-========================================================= */
+/* !=========================================================
+   !AUTH SAYFALARI (LOGIN, REGISTER, RESET, NEW PASSWORD ORTAK)
+!========================================================= */
 /* .auth-page / .auth-box temel stilleri aşağıdaki "AUTH SAYFALARI" bölümünde tanımlı */
 .auth-page--start { align-items: flex-start; padding-top: 70px; }
 
@@ -199,57 +204,57 @@ a { color: inherit; }
 .auth-switch a { color: var(--starry-text-light); font-weight: 500; text-decoration: none; }
 .auth-switch a:hover { text-decoration: underline; }
 
-/* =========================================================
-   AUTH SAYFALARI
-========================================================= */
+/* !=========================================================
+   !AUTH SAYFALARI
+!========================================================= */
 .auth-page { width: 100%; min-height: calc(100vh - 122px); display: flex; align-items: center; justify-content: center; padding: 40px 20px; }
 .auth-box { width: 100%; max-width: 440px; padding: 36px; background: var(--starry-navbar); border: 1px solid var(--starry-border); border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); text-align: left; }
 .auth-box h1 { margin: 0 0 10px; color: var(--starry-text-light); font-size: 30px; line-height: 1.25; letter-spacing: -0.5px; }
 .auth-description { margin: 0 0 25px; color: var(--starry-muted); font-size: 15px; line-height: 1.6; }
 
-/* =========================================================
-   FORM
-========================================================= */
+/* !=========================================================
+   !FORM
+!========================================================= */
 .auth-box form { display: flex; flex-direction: column; gap: 20px; }
 
 /* .form-group stilleri yukarıda LOGIN bölümünde tanımlı, burada tekrar edilmiyor */
-/* =========================================================
-   AUTH BUTONU
-========================================================= */
+/* !=========================================================
+   !AUTH BUTONU
+!========================================================= */
 .auth-box button { width: 100%; height: 46px; margin-top: 4px; border: 1px solid var(--starry-blue); border-radius: 8px; background: var(--starry-blue); color: var(--starry-text-light); font-family: Arial, sans-serif; font-size: 15px; font-weight: 500; cursor: pointer; transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease; }
 .auth-box button:hover:not(:disabled) { background: #3a476b; border-color: #3a476b; }
 .auth-box button:active:not(:disabled) { transform: translateY(1px); }
 .auth-box button:disabled { opacity: 0.55; cursor: not-allowed; }
 
-/* =========================================================
-   AUTH MESAJLARI
-========================================================= */
+/* !=========================================================
+   !AUTH MESAJLARI
+!========================================================= */
 .auth-error { margin: 0 0 20px; padding: 12px 14px; background: rgba(220, 53, 69, 0.10); border: 1px solid rgba(220, 53, 69, 0.25); border-radius: 8px; color: #ff8f9a; font-size: 14px; line-height: 1.5; }
 .auth-success { margin: 0 0 20px; padding: 12px 14px; background: rgba(25, 135, 84, 0.12); border: 1px solid rgba(25, 135, 84, 0.3); border-radius: 8px; color: #7ee2b8; font-size: 14px; line-height: 1.5; }
 
-/* =========================================================
-   AUTH ALT LİNKLERİ
-========================================================= */
+/* !=========================================================
+   !AUTH ALT LİNKLERİ
+!========================================================= */
 .auth-links { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; gap: 15px; }
 .auth-secondary-link { display: inline-block; margin-top: 20px; color: var(--starry-text); font-size: 14px; text-decoration: none; transition: color 0.2s ease; }
 .auth-secondary-link:hover { color: var(--starry-text-light); }
 
-/* =========================================================
-   LOGIN / REGISTER İÇİN ŞİFRE UNUTTUM
-========================================================= */
+/* !=========================================================
+   !LOGIN / REGISTER İÇİN ŞİFRE UNUTTUM
+!========================================================= */
 .auth-forgot-password { display: block; margin-top: -8px; color: var(--starry-muted); font-size: 13px; text-align: right; text-decoration: none; transition: color 0.2s ease; }
 .auth-forgot-password:hover { color: var(--starry-text-light); }
 
-/* =========================================================
-   AUTH ALT AÇIKLAMASI
-========================================================= */
+/* !=========================================================
+   !AUTH ALT AÇIKLAMASI
+!========================================================= */
 .auth-footer { margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--starry-border); color: var(--starry-muted); font-size: 14px; text-align: center; }
 .auth-footer a { color: var(--starry-text); text-decoration: none; transition: color 0.2s ease; }
 .auth-footer a:hover { color: var(--starry-text-light); }
 
-/* =========================================================
-   MOBİL
-========================================================= */
+/* <=========================================================
+   <MOBİL
+<========================================================= */
 
 @media (max-width: 768px) {
     .auth-page { min-height: calc(100vh - 100px); padding: 25px 15px; }
@@ -259,45 +264,35 @@ a { color: inherit; }
     .auth-links { flex-direction: column; align-items: stretch; text-align: center; }
     .auth-forgot-password { text-align: center; }
 }
-/* =========================================================
-   YÖNETİM NAVBAR
-========================================================= */
-.admin-navbar { position: sticky; top: 0; z-index: 900; width: 100%; background: var(--starry-category); border-bottom: 1px solid var(--starry-border); }
-.admin-navbar-inner { max-width: var(--starry-content-width); min-height: 52px; margin: 0 auto; padding: 0; display: flex; align-items: stretch; }
-.admin-navbar-links { display: flex; align-items: stretch; gap: 0; overflow-x: auto; scrollbar-width: thin; }
-.admin-navbar-links a { display: flex; align-items: center; height: 52px; padding: 0 18px; color: var(--starry-text); text-decoration: none; font-family: Arial, sans-serif; font-size: 15px; font-weight: 400; white-space: nowrap; }
-.admin-navbar-links a:hover { background: rgba(255, 255, 255, 0.07); color: var(--starry-text-light); }
 
-/* =========================================================
-   YÖNETİM NAVBAR - MOBİL
-========================================================= */
+/* <=========================================================
+   <YÖNETİM NAVBAR - MOBİL
+<========================================================= */
 
 @media (max-width: 768px) {
     .admin-navbar-inner { padding: 0 15px; }
     .admin-navbar-links a { padding: 0 14px; }
 }
-/* =========================================================
-   ADMIN SAYFALARI
-========================================================= */
+
+/* +=========================================================
+   +ADMIN SAYFALARI
++========================================================= */
 .admin-page { width: 100%; padding: 32px 0 60px; }
 
 /* Blog listesi */
 .admin-blog-list { display: flex; flex-direction: column; gap: 14px; }
 
 /* Blog kartı */
-.admin-blog-card { display: flex; align-items: center; justify-content: space-between; gap: 24px; width: 100%; padding: 20px 22px; background: var(--starry-navbar); border: 1px solid var(--starry-border); border-radius: 12px; transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease; }
 
 /* Kategori */
 .admin-blog-category { display: inline-flex; align-items: center; padding: 5px 9px; border-radius: 5px; background: var(--starry-blue); color: var(--starry-text-light); font-size: 12px; }
 
 /* Butonlar (.admin-actions-row -> ORTAK bölüm, index2.css) */
 /* Düzenle */
-.admin-edit-button { background: var(--starry-blue); color: var(--starry-text-light); }
-.admin-edit-button:hover { background: #3b476b; }
+
 
 /* Sil */
-.admin-delete-button { background: rgba(180, 50, 50, 0.15); color: #ffb4b4; }
-.admin-delete-button:hover { background: rgba(180, 50, 50, 0.28); }
+
 
 /* Blog ekle */
 .admin-primary-button { background: var(--starry-blue); color: var(--starry-text-light); white-space: nowrap; }
@@ -311,9 +306,9 @@ a { color: inherit; }
 /* Hata */
 .admin-error { margin-bottom: 24px; padding: 16px 18px; color: #ffb4b4; background: rgba(180, 50, 50, 0.12); border: 1px solid rgba(180, 50, 50, 0.25); border-radius: 8px; }
 
-/* =========================================================
-   ADMIN MOBİL
-========================================================= */
+/* <=========================================================
+   <ADMIN MOBİL
+<========================================================= */
 
 @media (max-width: 768px) {
     .admin-page { padding: 24px 0 40px; }
@@ -321,20 +316,17 @@ a { color: inherit; }
     .admin-actions-row button { flex: 1; }
 }
 /* Blog fotoğrafı */
-.admin-blog-card-image { width: 140px; flex-shrink: 0; }
 
 /* Blog bilgileri */
-.admin-blog-card-info { flex: 1; min-width: 0; }
 
 /* Kategori etiketleri */
 .admin-blog-categories { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
 
 /* ID / Yazar / durum bilgileri */
-.admin-blog-card-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; margin-left: auto; margin-right: 10px; font-size: 12px; color: #999; white-space: nowrap; }
 
-/* =========================================================
-   BLOG EKLEME FORMU
-========================================================= */
+/* *=========================================================
+   *BLOG EKLEME FORMU
+*========================================================= */
 .admin-form { width: 100%; max-width: 850px; padding: 28px; background: var(--starry-navbar); border: 1px solid var(--starry-border); border-radius: 12px; }
 .admin-form-group { display: flex; flex-direction: column; margin-bottom: 22px; }
 .admin-form-group label, .admin-form-label { margin-bottom: 8px; color: var(--starry-text-light); font-size: 14px; font-weight: 500; }
@@ -342,22 +334,22 @@ a { color: inherit; }
 .admin-form-group input[type="text"]:focus, .admin-form-group textarea:focus { border-color: var(--starry-blue); background: #10182c; }
 .admin-form-group textarea { min-height: 220px; resize: vertical; line-height: 1.6; }
 
-/* =========================================================
-   DOSYA SEÇİMİ
-========================================================= */
+/* *=========================================================
+   *DOSYA SEÇİMİ
+*========================================================= */
 .admin-form-group input[type="file"] { width: 100%; padding: 10px; box-sizing: border-box; background: var(--starry-category); border: 1px solid var(--starry-border); border-radius: 7px; color: var(--starry-muted); font-family: Arial, sans-serif; font-size: 13px; cursor: pointer; }
 
-/* =========================================================
-   KATEGORİLER
-========================================================= */
+/* *=========================================================
+   *KATEGORİLER
+*========================================================= */
 .admin-category-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
 .admin-category-option { display: inline-flex; align-items: center; gap: 8px; padding: 8px 11px; background: var(--starry-category); border: 1px solid var(--starry-border); border-radius: 7px; color: var(--starry-text); font-size: 13px; cursor: pointer; transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease; }
 .admin-category-option:hover { background: #10182c; border-color: rgba(255, 255, 255, 0.14); color: var(--starry-text-light); }
 .admin-category-option input { margin: 0; accent-color: var(--starry-blue); cursor: pointer; }
 
-/* =========================================================
-   BLOG FORM SEÇENEK BUTONLARI
-========================================================= */
+/* *=========================================================
+   *BLOG FORM SEÇENEK BUTONLARI
+*========================================================= */
 .admin-form-options { display: flex; align-items: center; gap: 10px; margin-top: 4px; margin-bottom: 28px; padding-top: 4px; }
 .admin-checkbox { position: relative; display: inline-flex; align-items: center; padding: 9px 14px; background: var(--starry-category); border: 1px solid var(--starry-border); border-radius: 7px; color: var(--starry-muted); font-family: Arial, sans-serif; font-size: 13px; cursor: pointer; user-select: none; transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease; }
 .admin-checkbox:hover { background: #10182c; border-color: rgba(255, 255, 255, 0.14); color: var(--starry-text-light); transform: translateY(-1px); }
@@ -368,21 +360,21 @@ a { color: inherit; }
 .admin-checkbox span::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--starry-muted); transition: background-color 0.2s ease, box-shadow 0.2s ease; }
 .admin-checkbox:has(input:checked) span::before { background: #ffffff; box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12); }
 
-/* Mobil */
+/* <Mobil */
 
 @media (max-width: 768px) {
     .admin-checkbox { flex: 1; justify-content: center; }
 }
-/* =========================================================
-   FORM BUTONLARI
-========================================================= */
+/* !=========================================================
+   !FORM BUTONLARI
+!========================================================= */
 .admin-form-actions { display: flex; align-items: center; justify-content: flex-end; gap: 10px; padding-top: 20px; border-top: 1px solid var(--starry-border); }
 .admin-secondary-button { border: 0; border-radius: 7px; padding: 9px 14px; background: var(--starry-category); color: var(--starry-text); font-family: Arial, sans-serif; font-size: 14px; cursor: pointer; transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease; }
 .admin-secondary-button:hover { background: #10182c; color: var(--starry-text-light); transform: translateY(-1px); }
 
-/* =========================================================
-   BLOG FORM MOBİL
-========================================================= */
+/* <=========================================================
+   <BLOG FORM MOBİL
+<========================================================= */
 
 @media (max-width: 768px) {
     .admin-form { padding: 20px 18px; }
@@ -392,9 +384,9 @@ a { color: inherit; }
     .admin-category-list { gap: 7px; }
     .admin-category-option { padding: 8px 10px; }
 }
-/* =========================================================
-   ADMIN BLOG EDITOR
-========================================================= */
+/* !=========================================================
+   !ADMIN BLOG EDITOR
+!========================================================= */
 .admin-editor { width: 100%; background: var(--starry-navbar); border: 1px solid var(--starry-border); border-radius: 8px; overflow: hidden; }
 .admin-editor-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; padding: 10px; background: var(--starry-category); border-bottom: 1px solid var(--starry-border); }
 .admin-editor-toolbar button { padding: 6px 10px; border: 1px solid var(--starry-border); border-radius: 5px; background: var(--starry-navbar); color: var(--starry-text); font-family: Arial, sans-serif; font-size: 13px; cursor: pointer; transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
@@ -418,8 +410,7 @@ a { color: inherit; }
 /* ************** KONTROLLU CSS KISMI ****************** */
 /* ***************************************************** */
 /* - Admin blog sayfası ve kategoriler sayfası */
-.admin--blog-card-info { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; min-width: 120px; }
-.admin--blog-card-info span { font-size: 12px; line-height: 1.4; font-weight: 400; color: #94a3b8; }
+
 
 /* .admin--blog-card-info span:nth-child(3) {
     color: #64748b;
@@ -442,7 +433,6 @@ a { color: inherit; }
     .admin--navbar-menu { gap: 2px; }
     .admin--navbar-menu a { padding: 7px 8px; font-size: 12px; }
 }
-.admin-success { margin-bottom: 24px; padding: 16px 18px; color: #b4ffbe; background: rgba(50, 180, 50, 0.12); border: 1px solid rgba(65, 180, 50, 0.25); border-radius: 8px; }
 
 /* ================================
    ADMIN ROLE CREATE

@@ -19,6 +19,7 @@ function AdminCategoryEdit() {
     const [blogs, setBlogs] = useState([]);
 
     const [baslik, setBaslik] = useState("");
+    const [originalBaslik, setOriginalBaslik] = useState("");
 
     const [loading, setLoading] = useState(true);
     const [submitting, setSubmitting] = useState(false);
@@ -42,6 +43,7 @@ function AdminCategoryEdit() {
 
                 setCategory(data.category);
                 setBlogs(data.blogs || []);
+                setOriginalBaslik(data.category.categoryname || "");
                 setBaslik(
                     data.category.categoryname || ""
                 );
@@ -230,11 +232,11 @@ function AdminCategoryEdit() {
             )}
 
             <form
-                className="admin-form"
+                className="admin-create-form"
                 onSubmit={handleSubmit}
             >
 
-                <div className="admin-form-group">
+                <div className="admin-create-field">
 
                     <label htmlFor="baslik">
                         Kategori Adı
@@ -255,13 +257,13 @@ function AdminCategoryEdit() {
                 </div>
 
 
-                <div className="admin-form-actions">
+                <div className="admin-actions-row">
 
                     <button
                         type="button"
-                        className="admin-secondary-button"
+                        className="admin-create-cancel"
                         onClick={() =>
-                            navigate("/admin/categories")
+                            setBaslik(originalBaslik)
                         }
                     >
                         Vazgeç
@@ -270,7 +272,7 @@ function AdminCategoryEdit() {
 
                     <button
                         type="submit"
-                        className="admin-primary-button"
+                        className="admin-create-submit"
                         disabled={submitting}
                     >
                         {submitting
@@ -284,13 +286,11 @@ function AdminCategoryEdit() {
             </form>
 
 
-            <div className="admin-page-header admin-category-blogs-header">
+            <div className="admin-page-header">
 
                 <div>
 
-                    <h2>
-                        Kategori Blogları
-                    </h2>
+                    
 
                     <p>
                         Bu kategoriye bağlı {blogs.length} blog bulunuyor.
@@ -356,7 +356,7 @@ function AdminCategoryEdit() {
                             </div>
 
 
-                            <div className="admin--blog-card-info">
+                            <div className="admin-blog-card-infos">
 
                                 <span>
                                     ID: {blog.blogid}

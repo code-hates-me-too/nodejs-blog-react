@@ -209,14 +209,14 @@ function AdminBlogs() {
                             </div>
 
 
-                            <div className="admin--blog-card-info">
+                            <div className="admin-blog-card-infos">
 
                                 <span>
                                     ID: {blog.blogid}
                                 </span>
 
                                 <span>
-                                    Yazar: {blog.userid}
+                                    Yazar: @{blog.user?.username}
                                 </span>
 
                                 <span>
