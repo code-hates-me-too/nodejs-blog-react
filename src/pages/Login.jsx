@@ -53,7 +53,7 @@ function Login() {
                 <h1>Giriş Yap</h1>
 
                 {error && (
-                    <p className="login-error">
+                    <p className="auth-error">
                         {error}
                     </p>
                 )}

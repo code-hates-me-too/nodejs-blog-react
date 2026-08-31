@@ -151,7 +151,7 @@ function AdminUsers() {
                             </div>
 
 
-                            <div className="admin-blog-card-actions">
+                            <div className="admin-actions-row">
 
                                 <button
                                     type="button"

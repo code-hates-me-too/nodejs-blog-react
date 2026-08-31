@@ -208,7 +208,7 @@ function AdminCategories() {
                 </div>
 
 
-                <div className="admin-create-actions">
+                <div className="admin-actions-row">
 
                     <button
                         type="button"
@@ -285,7 +285,7 @@ function AdminCategories() {
                             </div>
 
 
-                            <div className="admin-blog-card-actions">
+                            <div className="admin-actions-row">
 
                                 <button
                                     type="button"

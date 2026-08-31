@@ -137,14 +137,14 @@ function Register() {
     }
 
     return (
-        <div className="login-page">
+        <div className="auth-page auth-page--start">
 
-            <div className="login-box">
+            <div className="auth-box">
 
                 <h1>Kayıt Ol</h1>
 
                 {error && (
-                    <p className="login-error">
+                    <p className="auth-error">
                         {error}
                     </p>
                 )}
