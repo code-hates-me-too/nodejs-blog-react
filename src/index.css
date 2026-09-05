@@ -4,7 +4,6 @@
 * { box-sizing: border-box; }
 :root { --starry-bg: #0b1020; --starry-navbar: #080d1a; --starry-category: #0e152a; --starry-blue: #303a59; --starry-text: #c7d2fe; --starry-text-light: #ffffff; --starry-muted: #8f9bb8; --starry-border: rgba(255, 255, 255, 0.08); --starry-content-width: 1200px; }
 html { margin: 0; padding: 0; }
-body { margin: 0; padding: 0; font-family: Arial, sans-serif; background: var(--starry-bg); color: var(--starry-text); }
 a { color: inherit; }
 
 /* -=========================================================
@@ -21,12 +20,8 @@ a { color: inherit; }
 /* Logo */
 .navbar-brand { display: flex; align-items: center; color: var(--starry-text-light); text-decoration: none; font-family: Arial, sans-serif; font-size: 24px; font-weight: 700; margin-right: 40px; white-space: nowrap; }
 
-/* Navbar link grubu */
-.navbar-links { display: flex; align-items: stretch; gap: 8px; height: 70px; }
 
-/* Navbar linkleri */
-.navbar-links a { display: flex; align-items: center; padding: 0 16px; color: var(--starry-text); text-decoration: none; font-family: Arial, sans-serif; font-size: 15px; font-weight: 400; }
-.navbar-links a:hover { background: rgba(255, 255, 255, 0.06); color: var(--starry-text-light); }
+
 
 /* Sağdaki navbar elemanı */
 .navbar-login { display: flex; align-items: center; height: 70px; margin-left: auto; padding: 0 16px; color: var(--starry-text); text-decoration: none; font-family: Arial, sans-serif; font-size: 15px; font-weight: 400; }

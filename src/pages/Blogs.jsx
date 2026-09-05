@@ -3,7 +3,7 @@ import { useParams, useSearchParams } from "react-router-dom";
 
 import { getBlogs } from "../services/blogService";
 import BlogCard from "../components/BlogCard";
-import CategoryMenu from "../components/CategoryMenu";
+import BlogSidebar from "../components/BlogSidebar";
 import Pagination from "../components/Pagination";
 
 
@@ -11,14 +11,16 @@ function Blogs() {
 
     const { slug } = useParams();
 
-    const [searchParams] = useSearchParams();
+    const [searchParams, setSearchParams] = useSearchParams();
 
     const page = Number(searchParams.get("page")) || 0;
+    const aramaParam = searchParams.get("ara") || "";
 
 
     const [blogs, setBlogs] = useState([]);
-    const [categories, setCategories] = useState([]);
     const [pagination, setPagination] = useState(null);
+
+    const [aramaMetni, setAramaMetni] = useState(aramaParam);
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -29,12 +31,10 @@ function Blogs() {
         setLoading(true);
         setError(null);
 
-        getBlogs(slug, page)
+        getBlogs(slug, page, aramaParam)
             .then(data => {
 
                 setBlogs(data.blogs);
-
-                setCategories(data.categories);
 
                 setPagination(data.pagination);
 
@@ -50,7 +50,23 @@ function Blogs() {
 
             });
 
-    }, [slug, page]);
+    }, [slug, page, aramaParam]);
+
+
+    // Yazarken URL'e dokunmuyoruz, sadece submit edilince (Enter/buton) arıyoruz.
+    function handleAramaSubmit(event) {
+
+        event.preventDefault();
+
+        const nextParams = {};
+
+        if (aramaMetni.trim()) {
+            nextParams.ara = aramaMetni.trim();
+        }
+
+        setSearchParams(nextParams);
+
+    }
 
 
     if (loading) {
@@ -67,36 +83,68 @@ function Blogs() {
         ? `/blogs/category/${slug}`
         : "/blogs";
 
+    const extraQuery = aramaParam
+        ? `&ara=${encodeURIComponent(aramaParam)}`
+        : "";
+
+    const baslikMetni = aramaParam
+        ? `"${aramaParam}" için arama sonuçları`
+        : "Bloglar";
+
 
     return (
-        <div>
+        <div className="sayfa-kapsayici">
 
-            <h1>Bloglar</h1>
+            <div className="bl-ust">
 
-            <div className="blog-list">
+                <h1 className="bl-baslik">{baslikMetni}</h1>
 
-                {blogs.length === 0 ? (
+                <form
+                    className="bl-arama-form"
+                    onSubmit={handleAramaSubmit}
+                >
+                    <input
+                        type="text"
+                        placeholder="Blog ara..."
+                        value={aramaMetni}
+                        onChange={event => setAramaMetni(event.target.value)}
+                    />
 
-                    <p>Bu kategoride blog bulunamadı.</p>
-
-                ) : (
-
-                    blogs.map(blog => (
-                        <BlogCard
-                            key={blog.blogid}
-                            blog={blog}
-                        />
-                    ))
-
-                )}
+                    <button type="submit">Ara</button>
+                </form>
 
             </div>
 
+            <div className="bl-govde">
 
-            <Pagination
-                pagination={pagination}
-                basePath={basePath}
-            />
+                <div className="bl-liste">
+
+                    {blogs.length === 0 ? (
+
+                        <p className="silik-metin">Sonuç bulunamadı.</p>
+
+                    ) : (
+
+                        blogs.map(blog => (
+                            <BlogCard
+                                key={blog.blogid}
+                                blog={blog}
+                            />
+                        ))
+
+                    )}
+
+                    <Pagination
+                        pagination={pagination}
+                        basePath={basePath}
+                        extraQuery={extraQuery}
+                    />
+
+                </div>
+
+                <BlogSidebar />
+
+            </div>
 
         </div>
     );

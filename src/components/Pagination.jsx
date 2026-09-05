@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function Pagination({ pagination, basePath }) {
+function Pagination({ pagination, basePath, extraQuery = "" }) {
 
     if (!pagination || pagination.totalPages <= 1) {
         return null;
@@ -16,7 +16,7 @@ function Pagination({ pagination, basePath }) {
 
             {currentPage > 0 && (
                 <Link
-                    to={`${basePath}?page=${currentPage - 1}`}
+                    to={`${basePath}?page=${currentPage - 1}${extraQuery}`}
                     className="pagination-link"
                 >
                     Önceki
@@ -29,7 +29,7 @@ function Pagination({ pagination, basePath }) {
                 (_, index) => (
                     <Link
                         key={index}
-                        to={`${basePath}?page=${index}`}
+                        to={`${basePath}?page=${index}${extraQuery}`}
                         className={
                             `pagination-link ${
                                 currentPage === index
@@ -46,7 +46,7 @@ function Pagination({ pagination, basePath }) {
 
             {currentPage < totalPages - 1 && (
                 <Link
-                    to={`${basePath}?page=${currentPage + 1}`}
+                    to={`${basePath}?page=${currentPage + 1}${extraQuery}`}
                     className="pagination-link"
                 >
                     Sonraki

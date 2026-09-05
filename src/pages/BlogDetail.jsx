@@ -45,8 +45,9 @@ function BlogDetail() {
 
 
     return (
-        <main className="blog-detail">
-
+        
+    <div className="okumasayfasi"> 
+        <div>
             <article>
 
                 <img
@@ -76,7 +77,12 @@ function BlogDetail() {
 
             </article>
 
-        </main>
+        </div>
+        <div>
+            <p>kategoriler</p>
+        </div>
+
+    </div>
     );
 }
 

@@ -1,0 +1,103 @@
+:root {
+    --color-bg: #0b1020;
+    --color-surface: #0f1651;
+    --color-ink: #c7d2fe;
+    --color-ink-strong: #ffffff;
+    --color-ink-muted: #8f9bb8;
+    --color-accent-gold: #ffb300;
+    --color-accent-blue: #6ec3ff;
+    --color-line: rgba(255, 255, 255, 0.14);
+    --starry-content-width: 1200px;
+    --color-accent-gold-soft: rgba(172, 157, 111, 0.599);
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+}
+
+.nav-cubugu { background: var(--color-surface); }
+.nav-cubugu-ic { max-width: var(--starry-content-width); height: 64px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; }
+
+.nav-marka { color: var(--color-ink-strong); text-decoration: none; font-size: 21px; font-weight: 700; padding-right: 32px; }
+
+.nav-linkler { flex: 1; height: 100%; display: flex; align-items: stretch; justify-content: center; gap: 0; }
+.nav-link { height: 100%; display: flex; align-items: center; padding: 0 18px; color: var(--color-ink); text-decoration: none; font-size: 15px; font-weight: 500; background: transparent; border: 0; border-radius: 0; cursor: pointer; }
+.nav-link:hover, .nav-link.aktif { background: rgba(255, 255, 255, 0.08); color: var(--color-ink-strong); }
+
+.nav-sag { height: 100%; display: flex; align-items: stretch; gap: 0; }
+
+.nav-acilir-sarmalayici { position: relative; height: 100%; display: flex; align-items: stretch; }
+.nav-acilir-tetik { height: 100%; display: flex; align-items: center; padding: 0 18px; background: transparent; border: 0; border-radius: 0; color: var(--color-ink); font-size: 15px; font-weight: 500; cursor: pointer; }
+.nav-acilir-tetik:hover, .nav-acilir-tetik.aktif { background: rgba(255, 255, 255, 0.08); color: var(--color-ink-strong); }
+
+.nav-acilir-menu { position: absolute; top: 100%; left: 0; min-width: 200px; background: var(--color-surface); border-radius: 0; z-index: 500; }
+.nav-acilir-link { display: block; padding: 12px 18px; color: var(--color-ink); text-decoration: none; font-size: 14px; }
+.nav-acilir-link:hover { background: rgba(255, 255, 255, 0.08); color: var(--color-ink-strong); }
+
+/* =========================================================
+   ORTAK PARÇALAR (bilinçli olarak genel, başka sayfalarda da kullanılacak)
+========================================================= */
+.sayfa-kapsayici { max-width: var(--starry-content-width); margin: 0 auto; padding: 16px 16px 48px; }
+.ince-cizgi { height: 1px; background: var(--color-line); }
+.silik-metin { color: var(--color-ink-muted); font-size: 13px; }
+
+.bl-ust {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 14px;
+}
+/* =========================================================
+   BLOGLAR SAYFASI
+========================================================= */
+.bl-baslik { color: var(--color-ink-strong); font-size: 28px; font-weight: 700; margin: 0 0 24px; }
+
+.bl-arama-form { display: flex; gap: 8px; max-width: 280px; margin: 0 52px;}
+.bl-arama-form input { flex: 1; min-width: 0; box-sizing: border-box; background: transparent; border: 0; border-bottom: 1px solid var(--color-line); padding: 6px 2px; color: var(--color-ink-strong); font-size: 13px; }
+.bl-arama-form input::placeholder { color: var(--color-ink-muted); }
+.bl-arama-form input:focus { outline: none; border-bottom-color: var(--color-accent-gold); }
+.bl-arama-form button { background: transparent; border: 0; border-bottom: 1px solid var(--color-line); padding: 6px 10px; color: var(--color-ink); font-size: 13px; cursor: pointer; }
+.bl-arama-form button:hover { color: var(--color-accent-gold); border-bottom-color: var(--color-accent-gold); }
+
+.bl-govde { display: flex; gap: 56px; align-items: flex-start; margin-top: 25px;}
+
+.bl-liste { flex: 2; min-width: 0; display: flex; flex-direction: column; }
+
+.bl-satir { display: block; text-decoration: none; padding: 22px 16px; margin: 0 -16px; }
+.bl-satir:first-child { padding-top: 22px 16px; margin-top: 0; }
+.bl-satir .ince-cizgi { margin-top: 22px; margin-right: 8px; }
+
+.bl-satir:hover { background: var(--color-accent-gold-soft); }
+.bl-satir:hover .bl-satir-baslik,
+.bl-satir:hover .bl-satir-meta,
+.bl-satir:hover .bl-satir-meta span,
+.bl-satir:hover .bl-satir-meta span::after,
+.bl-satir:hover .bl-satir-ozet { color: var(--color-accent-gold); }
+
+.bl-satir-baslik { color: var(--color-ink-strong); font-size: 20px; font-weight: 700; margin: 0 0 8px; }
+.bl-satir-meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 8px; color: var(--color-ink-muted); font-size: 13px; }
+.bl-satir-meta span:not(:last-child)::after { content: "·"; margin-left: 6px; color: var(--color-ink-muted); }
+.bl-satir-ozet { color: var(--color-ink); font-size: 14px; line-height: 1.6; margin: 0; max-width: 62ch; }
+
+.bl-yan-panel { flex: 1; max-width: 260px; }
+
+.bl-panel-blok { padding: 20px 0; }
+.bl-panel-blok:first-child { padding-top: 0; }
+.bl-panel-blok .ince-cizgi { margin-top: 20px; }
+
+.bl-panel-baslik { color: var(--color-ink-strong); font-size: 15px; font-weight: 700; margin: 0 0 14px; }
+
+.bl-panel-linkler { display: flex; flex-direction: column; gap: 10px; }
+.bl-panel-link { color: var(--color-ink); text-decoration: none; font-size: 15px; }
+.bl-panel-link:hover { color: var(--color-accent-gold); }
+.bl-panel-link.aktif { color: var(--color-accent-gold); font-weight: 600; }
+
+@media (max-width: 860px) {
+    .bl-govde { flex-direction: column; }
+    .bl-yan-panel { max-width: none; width: 100%; }
+}

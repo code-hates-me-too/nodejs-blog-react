@@ -5,7 +5,6 @@ import BlogDetail from "./pages/BlogDetail";
 import Login from "./pages/Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
-import CategoryMenu from "./components/CategoryMenu";
 import Register from "./pages/Register";
 import ResetPassword from "./pages/ResetPassword";
 import NewPassword from "./pages/NewPassword";
@@ -33,8 +32,6 @@ function App() {
             <AuthProvider>
 
                 <Navbar />
-
-                <CategoryMenu />
 
                 <AdminNavbar />
                 

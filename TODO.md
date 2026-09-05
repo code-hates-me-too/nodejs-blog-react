@@ -10,4 +10,8 @@
 - [ ] işlem başarılı veya başarısız uyarılarını tamamla
 - [ ] blog kategorilerinden , kullanıcı rol etiketlerinden ilgili sayfalara yönlendirme yapılsın
 - [ ] 
+- [ ] bloga fotoğraf yükleme ayarı yap, sabit bir boyuta çeksin fotoğrafları, kırpma modülü kullan
+- [ ] blog paylaşmayı onaya bağla
+- [ ] 
+- [ ] 
 

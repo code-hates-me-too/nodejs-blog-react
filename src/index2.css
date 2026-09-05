@@ -4,6 +4,9 @@
 .admin-error { margin-bottom: 24px; padding: 16px 18px; color: #ffb4b4; background: rgba(180, 50, 50, 0.12); border: 1px solid rgba(180, 50, 50, 0.25); border-radius: 8px; }
 .admin-success { margin-bottom: 24px; padding: 16px 18px; color: #b4ffbe; background: rgba(50, 180, 50, 0.12); border: 1px solid rgba(65, 180, 50, 0.25); border-radius: 8px; }
 
+body { margin: 0; padding: 0; font-family: var(--font-govde); background: var(--starry-bg); color: var(--starry-text); }
+
+
 /* * BAŞLIK VE ALT BAŞLIKLAR */
 .admin-page-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
 .admin-page-header h1 { margin: 0 0 8px; color: var(--starry-text-light); font-size: 32px; line-height: 1.2; }
@@ -340,3 +343,5 @@
     font-size: 13px;
     margin-top: 6px;
 }
+/* ! BLOG OKUMA SAYFASI */
+.okumasayfasi { display: flex; gap: 20px; align-items: stretch; } .parent > div:first-child { flex: 3; } .parent > div:last-child { flex: 1; }
